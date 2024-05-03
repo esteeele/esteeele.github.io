@@ -1,8 +1,7 @@
 ---
-layout: post
-title:  "Regent's Park for LSL"
-date:   2024-02-25 18:41:18 +0000
-categories: software
+layout: page
+title: Swamp Monsters
+permalink: /swamp-monsters/
 ---
 
 ### Regent's Park Pitches
@@ -19,11 +18,11 @@ categories: software
 | Division 6 | 14/8/2024 | Wednesday | Swamp Monsters | Base Jam | Regent's Park | 15 | Raiders Indigo | ? |
 
 
+![alt text](swamp-monsters.jpg)
+
 ### 102 Sessions 
 
 - *Location*: Clissold Park
 - *Time*: Tuesdays, from 2024-05-21
 - *Cadence*: Biweekly
 - *Price*: £7 
-
-Links: https://group.spond.com/PZYDK
