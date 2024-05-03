@@ -6,16 +6,19 @@ permalink: /swamp-monsters/
 
 ### Regent's Park Pitches
 
-| Division | Date | Day | Home Team | Away Team | Venue | Pitch | Umpire | Base Bringer |
-| ------------- |:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
-| Division 6 | 8/5/2024 | Wednesday | Swamp Monsters | Raiders Orange | Regent's Park | 13 | Base Jam | Naomie |
-| Division 6 | 22/5/2024 | Wednesday | Swamp Monsters | Bangers & Smash | Regent's Park | 12 | Raiders Indigo | ? |
-| Division 6 | 5/6/2024 | Wednesday | Swamp Monsters | Raiders Indigo | Regent's Park | 15 | Bonk Squad | ? |
-| Division 6 | 10/6/2024 | Monday | Base Jam | Swamp Monsters | Regent's Park | 12 | Beavers | N.A |
-| Division 6 | 19/6/2024 | Wednesday | Swamp Monsters | Beavers | Regent's Park | 15 | Raiders Red | ? |
-| Division 6 | 3/7/2024 | Wednesday | Swamp Monsters | Raiders Red | Regent's Park | 14 | Raiders Green | ? |
-| Division 6 | 31/7/2024 | Wednesday | Swamp Monsters | Raiders Green | Regent's Park | 15 | Beavers | ? |
-| Division 6 | 14/8/2024 | Wednesday | Swamp Monsters | Base Jam | Regent's Park | 15 | Raiders Indigo | ? |
+| Date | Day | Home Team | Away Team  | Pitch | Umpire | Base Bringer |
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+| 8/5/2024 | Wednesday | Swamp Monsters | Raiders Orange | 13 | Base Jam |  Naomie |
+| 9/5/2024 | Thursday | Base Jam | Raiders Indigo | 12 | Swamp Monsters |  NA |
+| 22/5/2024 | Wednesday | Swamp Monsters | Bangers & Smash | 12 | Raiders Indigo |  ? |
+| 23/5/2024 | Thursday | Base Jam | Beavers | 13 | Swamp Monsters |  NA |
+| 5/6/2024 | Wednesday | Swamp Monsters | Raiders Indigo | 15 | Bonk Squad |  ? |
+| 6/6/2024 | Thursday | Base Jam | Bangers & Smash | 14 | Swamp Monsters |  NA |
+| 10/6/2024 | Monday | Base Jam | Swamp Monsters | 12 | Beavers |  ? |
+| 19/6/2024 | Wednesday | Swamp Monsters | Beavers | 15 | Raiders Red |  ? |
+| 3/7/2024 | Wednesday | Swamp Monsters | Raiders Red | 14 | Raiders Green |  ? |
+| 31/7/2024 | Wednesday | Swamp Monsters | Raiders Green | 15 | Beavers |  ? |
+| 14/8/2024 | Wednesday | Swamp Monsters | Base Jam | 15 | Raiders Indigo |  ? |
 
 
 ![alt text](regents-park.jpg)
