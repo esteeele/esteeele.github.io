@@ -18,7 +18,7 @@ permalink: /swamp-monsters/
 | Division 6 | 14/8/2024 | Wednesday | Swamp Monsters | Base Jam | Regent's Park | 15 | Raiders Indigo | ? |
 
 
-![alt text](swamp-monsters.jpg)
+![alt text](regents-park.jpg)
 
 ### 102 Sessions 
 
