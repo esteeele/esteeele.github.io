@@ -14,7 +14,7 @@ permalink: /swamp-monsters/
 | 23/5/2024 | Thursday | Base Jam | Beavers | 13 | Swamp Monsters |  NA |
 | 5/6/2024 | Wednesday | Swamp Monsters | Raiders Indigo | 15 | Bonk Squad |  ? |
 | 6/6/2024 | Thursday | Base Jam | Bangers & Smash | 14 | Swamp Monsters |  NA |
-| 10/6/2024 | Monday | Base Jam | Swamp Monsters | 12 | Beavers |  ? |
+| 10/6/2024 | Monday | Base Jam | Swamp Monsters | 17 | Beavers |  ? |
 | 19/6/2024 | Wednesday | Swamp Monsters | Beavers | 15 | Raiders Red |  ? |
 | 3/7/2024 | Wednesday | Swamp Monsters | Raiders Red | 14 | Raiders Green |  ? |
 | 31/7/2024 | Wednesday | Swamp Monsters | Raiders Green | 15 | Beavers |  ? |
