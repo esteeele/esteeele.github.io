@@ -7,7 +7,12 @@ categories: japan
 
 ## Omonichi 
 
-My main reason for visiting this town was to do the 'Shimano Kodo' a fun cycling route that links together the mainland of Honshu with the smaller and much more rural island of Shikoku. I'd say as a single activity this was the highlight of my holiday. Its hard really to overstate how awesome and how right up my street it was. You basically cycle through beautiful fishing villages and docks across these improbably massive suspension bridges. Onomichi is beautiful enough as is and I had probably my best Ramen experience in Japan here - the food was great and it was first place I was able to sound out a menu item by reading the Hiragan aloud. I was absolutely buzzing from that and the "Ramen Master" seemed happy a tourist said something in Japanese. 
+My main reason for visiting this town was to do the 'Shimanami Kodo' a fun cycling route that links together the mainland of Honshu with the smaller and much more rural island of Shikoku. I'd say as a single activity this was the highlight of my holiday. Its hard really to overstate how awesome and how right up my street it was. You basically cycle through beautiful fishing villages and docks across these improbably massive suspension bridges. Onomichi is beautiful enough as is and I had probably my best Ramen experience in Japan here - the food was great and it was first place I was able to sound out a menu item by reading the Hiragan aloud. I was absolutely buzzing from that and the "Ramen Master" seemed genuinely happy a tourist said something in Japanese. 
+
+On a side note the handwritten menus are something I love about Japanese restaurants - they presumably are 
+there because they chef just makes whatever they have ingredients before on a bit of a rota, the food is low-cost with 
+no frills. I _wish_ we had more dining options for healthier fast food that's casual and friendly for eating alone, just somewhere between 
+Maccies and an actual restaurant. 
 
 ![Ramen](https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/onomichi-ramen.jpeg)
 
@@ -20,16 +25,18 @@ Am I in Venice?
 
 #### Aside: Japanese Economic History
 
-This is the one of the most visible symbols in Japan of the dangers of over building infrastructure - as so much of the economy and employment of Japan is taken up in construction which boomed during Japan's postwar economic miracle the government wanted (or due to cronyisnm) to keep the gravy train rolling. At this point Shikoku already has a great road and rail bridge to its most densely populated region in Kagawa province. The economic case for building another set of extremely expensive road only bridges was puzzling. The case against is basically 
+This is the one of the most visible symbols in Japan of the dangers of over building infrastructure - as so much of the economy and employment of Japan is taken up in construction which boomed during Japan's postwar economic miracle the government wanted (or due to cronyisnm) to keep the gravy train rolling. At this point Shikoku already has a great road and rail bridge to its most densely populated region in Kagawa province. The economic case for building another set of extremely expensive road only bridges isn't that strong.
+ The case against is basically 
  - Massive upfront capital investment that may have more efficient uses (even tax cuts in some circumstances that allow people to spend where they feel it improves their lives best)
  - The big one: the upkeep bill which always dwarves the initial cost of construction. If the economic growth in the regions is less than the cost of maintenance then you've got a white elephant. 
 
-So in some ways the 'point' of the _Shimano Kodo_ is to get _someone_ to use these damn bridges and bring some tourist investment to the area! And I'm all for it. In some ways the engineering _was_ the touristic experience - the staggering scale and majesty of these basically empty bridges is staggering. That there's just one of these after another after another defies belief. Hats off to Japan in the 1990s - you had an ambition and belief in progress we seem to have lost in the UK. 
+So in some ways the 'point' of the _Shimano Kodo_ is to get _someone_ to use these damn bridges and bring some tourist investment to the area! And I'm all for it. In some ways the engineering _was_ the touristic experience - the staggering scale and majesty of these basically empty bridges is staggering. That there's just one of these after another after another defies belief. Hats off to Japan in the 1990s - you had an ambition and belief in progress we seem to have lost a little in the UK. 
 
 ![BigBridgeLittleCar](https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/big-bridges.jpeg)
 
 ## Shimmy Shimano Kodo 
 
+OK it's the `Shimanami Kodo` but it sounds kind of similar to the bike brake system `Shimano` so my brain kept correcting it. 
 There's not much more to say so here's some photos 
 
 ![Islands](https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/paraiso-2.jpeg)
@@ -40,7 +47,8 @@ There were even purpose built ramps up to the bridges!
 
 ## Kagawa Prefecture: Takamtsu 
 
-Takamatsu was a wonderful surprise - I only really saw it as a pit stop on the way to the "Iya Valley" which I'd seen online and looked really cool. There's nothing too amazing about this place in and of itself but from Japanese people I'd heard things about the "Sanuki Udon" noodle and the rice Buckwheat Udon dishes in this part of Japan. I loved these noodles - they're basically big, extra chunky noodles in rich meaty broths. Just gooey carby deliciousness in a bowl - Xi'an style noodles also have a special place in my heart because I used to get them relatively often when I lived with my brother over the long periods of lockdown as a 'pick me up'.
+Takamatsu was a wonderful surprise - I only really saw it as a pit stop on the way to the "Iya Valley" which I'd seen online and looked really cool. There's nothing too amazing about this place in and of itself but from Japanese people I'd heard things about the "Sanuki Udon" Buckwheat noodle dishes in this part of Japan. I loved these noodles - they're basically big, extra chunky noodles in rich meaty broths. 
+Just gooey carby deliciousness in a bowl - their Chinese cousins Xi'an style noodles also have a special place in my heart because I used to get them relatively often when I lived with my brother over the long periods of lockdown as a pick me up.
 
 As for an actual tourist attraction the only place I really went to was the "Ritsurin Koen" garden - absolutely beautiful and a place that really speaks to the peaceful serenity (and inequality) of the Edo feudal era. 
 
@@ -90,17 +98,19 @@ So I pedalled back to the train, got to Kochi then tried to get to the hostel. T
 > Excuse me, I'm sorry 
 > ... 
 
-I know I probably "did something wrong" but I'm sorry if you work in a bus station, and someone asks about a place what the hell do you think they are asking for? She knew, she was just being deliberately obscurative. I was stressed and a bit pissed of which didn't help but WTF was her problem? Just couldn't be arsed I guess. 
+I know I probably "did something wrong" but I'm sorry if you work in a bus station, and someone asks about a place what the hell do you think they are asking for? She knew, she was just being deliberately obstructive. I was stressed and a bit cranky which didn't help but WTF was her problem? Just couldn't be arsed I guess. 
 
-Anyway I figured out a route and managed to make it to the hostel but arrived pissed off, tired, hungry and about 2 hours late. I'm not ashamed to say that walking along the path of some fishing village and feeling the briny breeze and seaside smell of rotting kelp I was reminded of seaside holidays at home and I sat on the breakwater and had a little cry by myself in the dark. Not that I was sad or anything, just had to let something out. Fortunately the hostel owner was just the sweetest person, really friendly and kind. She even offered to drive me to the supermarket where I got some stir fry, salad and ice-cream and had a nice little meal using their microwave. The incredibly friendly shop counter guy may have thought we had a conversation but to this day I have no idea what he was talking about or why he thought I could speak Japanese, I was just nodding at appropriate times and smiling. He probably appreciated the company. 
+Anyway I figured out a route and managed to make it to the hostel but arrived long into the night, tired, hungry and about 2 hours late. I'm not ashamed to say that walking along the path of some fishing village and feeling the briny breeze and seaside smell of rotting kelp I was reminded of seaside holidays at home and I sat on the breakwater and had a little cry by myself in the dark. Not that I was sad or anything, just had to let something out. Fortunately the hostel owner was just the sweetest person, really friendly and kind. She even offered to drive me to the supermarket where I got some stir fry, salad and ice-cream and had a nice little meal using their microwave. The incredibly friendly shop counter guy may have thought we had a conversation but to this day I have no idea what he was talking about or why he thought I could speak Japanese, I was just nodding at appropriate times and smiling. He probably appreciated the company. 
 
-The next day started pretty well, I had a tasty breakfast of a seaweed rice ball then set off for Kocki. I'd fixed by route - there was a coach from Kochi back to Okayama on the Shinkansen which would get me back to Tokyo (very expensively) on the same day. From there it all went downhill. I waited for the first bus, then waited some more, then some more, then the next busses supposed departure came and went then I started to stress. I was literally in the middle of nowhere, I didn't know how to get a taxi or really how to get out easily. Instead I decided to hoof it overland to the next train station - about a 3 hour walk. 
+The next day started pretty well, I had a tasty breakfast of a seaweed rice ball then set off for Kochi. I'd fixed my route - there was a coach from Kochi (ahey) back to Okayama on the Shinkansen which would get me back to Tokyo (very expensively) on the same day. From there it all went downhill. I waited for the first bus, then waited some more, then some more, then the next busses supposed departure came and went then I started to stress. I was literally in the middle of nowhere, I didn't know how to get a taxi or really how to get out easily. Instead I decided to hoof it overland to the next train station - about a 3 hour walk. 
 
 ![NekoCar](https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/neko.jpeg)
 
-This is going to sound weird but a long country walk where you don't want to do it, and its just an inconvenience hits totally different to a hike. In theory they're both just nice long walks and there were literally tourists LARPing as pilgrims doing the same walk I was just so angry at myself for cocking this up as much as I had done. I think hitchhiking is illegal in Japan so I just walked. In some ways I'm glad I did because I saw non picturesque rural Japan and ... it kind of sucks? It really did not feel like a wealthy place at all, perhaps a healthy and happy one but the houses were small and poor quality - lots of small scale labour intensive farming with the landscape churned up by ugly pavementless roads and tunnels. 
+This is going to sound weird but a long country walk where you don't want to do it, and its just an inconvenience hits totally different to a hike. In theory they're both just nice long walks and there were literally tourists LARPing as pilgrims doing the same walk I was just so angry at myself for cocking this up as much as I had done. I think hitchhiking is illegal in Japan so I just walked. In some ways I'm glad I did because I saw non picturesque rural Japan and ... it kind of sucks? 
+It really did not feel like a wealthy place at all, perhaps a healthy and happy one but the houses were small and poor quality - lots of small scale labour intensive farming with the landscape churned up by ugly pavementless roads and tunnels. 
+I'm not trying to be mean just understanding that actually its not that nice in the countryside to actually live - there's lots of good reasons young people leave for the cities.
 
-Still when I finally made it to the train station, sweaty and gross, and the train came and I arrived to Kochi I finally relaxed. There was a cool Sunday market which I just made to the end of where I got a nice cooking knife and some Matcha Tea Ice Cream and saw Kochi's beautiful castle and gardens. 
+Still when I finally made it to the train station, sweaty and gross, and the train came and I arrived in Kochi I finally relaxed. There was a cool Sunday market which I just made to the end of where I got a nice cooking knife and some Matcha Tea Ice Cream and saw Kochi's beautiful castle and gardens. 
 
 _Aside: I learnt the morpheme for tea and think its really pretty_ 
 # 茶 (cha)
@@ -117,9 +127,11 @@ I'd definitely recommend it for hiking, cycling and sports and it was close to m
 
 ### Musing 
 
-What's the difference between a traveller and a tourist? I think its mostly nothing more than a semantic difference in the 21st century where your mate from school is uploading photos to Instagram of them riding a horse in Uzbekistan, or your retired boomer relatives are getting back from 'last chance' tours of the Arctic before the climate changes. The most incredible expeditions that would have been national news a century and a half ago are essentially easily consumable packages available to the average relatively talented, or just lucky, schmuck from the developed world. I think I found this a little in Japan. It's somewhere I've dreamed about visiting since I was a child, and I still had a slightly childish belief that I'd somehow feel different there. Shikoku was the place where I felt things: almost transcendant wonder, secondhand loss for the cratering population, frustration and sadness. I don't know exactly why. I think I'd spent so long blasting from place to place I was just exhausted and frayed. 
+I read somewhere that a tourist is defined as being someone "who travels to experience a change". In that way 
+I think Shikoku provided that for me. Its a bit odd in some ways to travel by yourself and I'm definitely feeling the 
+terrifying progression of time and not really being young anymore. I actually think taking time to pause and reflect
+while doing something totally out of the ordinary is a wonderful thing, and may even be the best thing about living
+in a wealthy country for me. 
 
-If its not clear the reason I like doing a slightly bizarre thing like travelling by yourself to the other side of the world is to have experiences and mini-adventures guilt free. I think for that you need to embrace the potential for bad things to happen and to just roll with them. 
-
-Me but sleepy
+Sleepy me except its dark and moody
 ![TiredMe](https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/tired-me.jpeg)
