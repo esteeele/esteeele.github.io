@@ -7,7 +7,7 @@ categories: japan
 
 ## Omonichi 
 
-My main reason for visiting this town was to do the 'Shimanami Kodo' a fun cycling route that links together the mainland of Honshu with the smaller and much more rural island of Shikoku. I'd say as a single activity this was the highlight of my holiday. Its hard really to overstate how awesome and how right up my street it was. You basically cycle through beautiful fishing villages and docks across these improbably massive suspension bridges. Onomichi is beautiful enough as is and I had probably my best Ramen experience in Japan here - the food was great and it was first place I was able to sound out a menu item by reading the Hiragan aloud. I was absolutely buzzing from that and the "Ramen Master" seemed genuinely happy a tourist said something in Japanese. 
+My main reason for visiting this town was to do the 'Shimanami kaido' a fun cycling route that links together the mainland of Honshu with the smaller and much more rural island of Shikoku. I'd say as a single activity this was the highlight of my holiday. Its hard really to overstate how awesome and how right up my street it was. You basically cycle through beautiful fishing villages and docks across these improbably massive suspension bridges. Onomichi is beautiful enough as is and I had probably my best Ramen experience in Japan here - the food was great and it was first place I was able to sound out a menu item by reading the Hiragan aloud. I was absolutely buzzing from that and the "Ramen Master" seemed genuinely happy a tourist said something in Japanese. 
 
 On a side note the handwritten menus are something I love about Japanese restaurants - they presumably are 
 there because they chef just makes whatever they have ingredients before on a bit of a rota, the food is low-cost with 
@@ -30,13 +30,13 @@ This is the one of the most visible symbols in Japan of the dangers of over buil
  - Massive upfront capital investment that may have more efficient uses (even tax cuts in some circumstances that allow people to spend where they feel it improves their lives best)
  - The big one: the upkeep bill which always dwarves the initial cost of construction. If the economic growth in the regions is less than the cost of maintenance then you've got a white elephant. 
 
-So in some ways the 'point' of the _Shimano Kodo_ is to get _someone_ to use these damn bridges and bring some tourist investment to the area! And I'm all for it. In some ways the engineering _was_ the touristic experience - the staggering scale and majesty of these basically empty bridges is staggering. That there's just one of these after another after another defies belief. Hats off to Japan in the 1990s - you had an ambition and belief in progress we seem to have lost a little in the UK. 
+So in some ways the 'point' of the _Shimano kaido_ is to get _someone_ to use these damn bridges and bring some tourist investment to the area! And I'm all for it. In some ways the engineering _was_ the touristic experience - the staggering scale and majesty of these basically empty bridges is staggering. That there's just one of these after another after another defies belief. Hats off to Japan in the 1990s - you had an ambition and belief in progress we seem to have lost a little in the UK. 
 
 ![BigBridgeLittleCar](https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/big-bridges.jpeg)
 
-## Shimmy Shimano Kodo 
+## Shimmy Shimano kaido 
 
-OK it's the `Shimanami Kodo` but it sounds kind of similar to the bike brake system `Shimano` so my brain kept correcting it. 
+OK it's the `Shimanami kaido` but it sounds kind of similar to the bike brake system `Shimano` so my brain kept correcting it. 
 There's not much more to say so here's some photos 
 
 ![Islands](https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/paraiso-2.jpeg)
