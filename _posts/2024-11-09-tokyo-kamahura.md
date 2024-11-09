@@ -5,12 +5,12 @@ date:   2024-11-08 18:41:18 +0000
 categories: japan
 ---
 
-I ummed and arred about doing a final entry in this series as what else could possibly be said or written about Tokyo? Even without knowing where these places are scenes like the 'Shibuya scramble', the Tokyo Sky Tower and the general manic-ness of central Tokyo are so well known it feels like unnecessary to rehash. So this is going to be essentially just things I noticed, or reflect the city as it is most of the time. I also went to Kamakura which was more generically photogenic so that's more standard tourist snaps. 
+I was unsure about doing a final entry in this series as what else could possibly be said or written about Tokyo? Even without knowing where these places are scenes like the 'Shibuya scramble', the Tokyo Sky Tower and the general manic-ness of central Tokyo are so well known it feels like unnecessary to rehash. So this is going to be essentially just things I noticed, or reflect the city as it is most of the time. I also went to Kamakura which was more generically photogenic so that's more standard tourist snaps. 
 
 ## Tokyo (second) Impressions 
 
-My first visit to Tokyo was technically the first day of the holiday, but I didn't stay very long - mainly just looking around the neighbourhood around 'Shinjuku' one of Tokyo's main train stations. The first time getting metro trains, using JR rail was a bewildering and confusing experience, the second easier. 
-I actually got a little kick out of striding through train stations like a terminator being as I was bigger than most people (don't @ me). 
+My first visit to Tokyo was technically the first day of the holiday, but I didn't stay very long - mainly just looking around the neighbourhood around 'Shinjuku' one of Tokyo's main train stations. The first time getting metro trains and using JR rail was a bewildering and confusing experience (make sure you a. use the right machine, b. buy a paper ticket AND scan your travel card), the second easier. 
+I actually got a little kick out of confidently striding through train stations in Tokyo like a terminator sent from the future. 
 
 Tokyo was easily my favourite city to visit in Japan and one of the most exciting and stimulating places I've ever visited. There's a certain manic energy to the place - something about the ultra-white lighting in the train network, the constant frenetic jingles that play in shops and just the ceaseless purposefulness of the people going about their lives. 
 
