@@ -82,3 +82,5 @@ It took a few attempts but while I was doing in a couple of taxis pulled up righ
 That's it. 
 
 おやすみ! 
+
+![Moon](https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/tokyo-kamakura/tokyo-moon.jpeg)
