@@ -2,7 +2,7 @@
 layout: post
 title:  "Matsumoto, Kamikochi and the Kiso Valley"
 date:   2024-10-25 18:41:18 +0000
-categories: japan,travel
+categories: [japan,travel]
 ---
 
 In the Autumn of 2024 I visited Japan, which is an awesome place to visit and the first stop along the way I went to was Matsumoto, Kamikochi and the Kiso Valley. 

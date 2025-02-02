@@ -2,7 +2,7 @@
 layout: post
 title:  "Tokyo and Kamakura"
 date:   2024-11-08 18:41:18 +0000
-categories: japan
+categories: [japan]
 ---
 
 I was unsure about doing a final entry in this series as what else could possibly be said or written about Tokyo? Even without knowing where these places are scenes like the 'Shibuya scramble', the Tokyo Sky Tower and the general manic-ness of central Tokyo are so well known it feels like unnecessary to rehash. So this is going to be essentially just things I noticed, or reflect the city as it is most of the time. I also went to Kamakura which was more generically photogenic so that's more standard tourist snaps. 

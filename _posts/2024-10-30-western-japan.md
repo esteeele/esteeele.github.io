@@ -2,7 +2,7 @@
 layout: post
 title:  "Western Japan - Onomichi and Shikoku"
 date:   2024-10-30 18:41:18 +0000
-categories: japan
+categories: [japan]
 ---
 
 ## Omonichi 

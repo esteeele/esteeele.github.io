@@ -2,7 +2,7 @@
 layout: post
 title:  "My favourite 5 Books I've read in 2024"
 date:   2024-12-21 18:00:18 +0000
-categories: life
+categories: [life]
 ---
 
 To be clear these are not books published in 2024, just one's that I have read this year. 

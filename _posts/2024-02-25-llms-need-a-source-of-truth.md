@@ -2,7 +2,7 @@
 layout: post
 title:  "LLM's will probably be a component of a truly intelligent system, not the system itself"
 date:   2024-02-25 18:41:18 +0000
-categories: software
+categories: [software]
 ---
 
 LLMs, while amazingly useful in so many ways, lack a concept of truth that will hold them back unless combined with a system capable of discerning true information from hallucinations.

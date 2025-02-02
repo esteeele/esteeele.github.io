@@ -2,7 +2,7 @@
 layout: post
 title:  "Things I've learnt as a self taught software developer"
 date:   2024-02-18 09:41:18 +0000
-categories: software
+categories: [software]
 ---
 
 I’ve now been a ‘self taught’ developer with 6 years professional experience. The process of reviewing graduate applications for my company has got me thinking about things that I’ve learnt coming into the industry and as I’ve gained more experience. I’ve got some groupings here that go beyond the non obvious stuff (know how to code)

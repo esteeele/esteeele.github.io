@@ -2,7 +2,7 @@
 layout: post
 title:  "Central Japan: Nagoya, Kyoto and Osaka"
 date:   2024-10-29 18:41:18 +0000
-categories: japan
+categories: [japan]
 ---
 
 ## Nagoya (is not boring)

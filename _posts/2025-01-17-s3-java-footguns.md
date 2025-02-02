@@ -2,7 +2,7 @@
 layout: post
 title:  "Surprising problems with S3 and Java's InputStream"
 date:   2025-01-17 18:00:18 +0000
-categories: software
+categories: [software]
 ---
 
 To begin with S3 is of course AWS' object storage system that abstracts the underlying realities
