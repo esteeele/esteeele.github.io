@@ -14,7 +14,7 @@ This is a list mainly composed of painful lessons learned the hard - code that s
 but turns around to bite you when you least expect it. This is totally from the perspective of using 
 the Java client SDK. 
 
-## InputStream (more like pain pipe)
+## InputStream (more like PainPipe)
 
 InputStreams are a fundamental abstraction for working with byte data with the JVM from the very 
 outset of the platform and are deeply ingrained in all sorts of libraries. They are, it's fair to say, 
