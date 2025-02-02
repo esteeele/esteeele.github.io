@@ -1,4 +1,97 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-12-21T18:18:38+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ed’s Blog</title><subtitle>A personal blog where I&apos;ll write stuff and things</subtitle><author><name>Edmund Steele</name></author><entry><title type="html">My favourite 5 Books I’ve read in 2024</title><link href="http://localhost:4000/life/2024/12/21/books-of-the-year.html" rel="alternate" type="text/html" title="My favourite 5 Books I’ve read in 2024" /><published>2024-12-21T18:00:18+00:00</published><updated>2024-12-21T18:00:18+00:00</updated><id>http://localhost:4000/life/2024/12/21/books-of-the-year</id><content type="html" xml:base="http://localhost:4000/life/2024/12/21/books-of-the-year.html"><![CDATA[<p>To be clear these are not books published in 2024, just one’s that I have read this year.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-02-02T19:04:18+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ed’s Blog</title><subtitle>A personal blog where I&apos;ll write stuff and things</subtitle><author><name>Edmund Steele</name></author><entry><title type="html">Surprising problems with S3 and Java’s InputStream</title><link href="http://localhost:4000/software/2025/01/17/s3-java-footguns.html" rel="alternate" type="text/html" title="Surprising problems with S3 and Java’s InputStream" /><published>2025-01-17T18:00:18+00:00</published><updated>2025-01-17T18:00:18+00:00</updated><id>http://localhost:4000/software/2025/01/17/s3-java-footguns</id><content type="html" xml:base="http://localhost:4000/software/2025/01/17/s3-java-footguns.html"><![CDATA[<p>To begin with S3 is of course AWS’ object storage system that abstracts the underlying realities
+of actually storing files into a (mostly) intuitive and easy to use API. It’s reliability and reach 
+are truly staggering and it is one of the most impressive large scale software systems out there.</p>
+
+<p>But it can go wrong - there are some behaviours that are unclear, confusing and difficult. 
+This is a list mainly composed of painful lessons learned the hard - code that seems innocuous
+but turns around to bite you when you least expect it. This is totally from the perspective of using 
+the Java client SDK.</p>
+
+<h2 id="inputstream-more-like-pain-pipe">InputStream (more like pain pipe)</h2>
+
+<p>InputStreams are a fundamental abstraction for working with byte data with the JVM from the very 
+outset of the platform and are deeply ingrained in all sorts of libraries. They are, it’s fair to say, 
+ubiquitous.</p>
+
+<p>With AWS S3 however the client gives you a nice Java bit of code like
+<code class="language-plaintext highlighter-rouge">InputStream inputStream = s3Client.getObject(GetObjectRequest.builder().bucket("b").key("k").build())</code></p>
+
+<p>Then a Java developer can see something like this and write some code like</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">(</span><span class="nc">InputStream</span> <span class="n">inputStream</span> <span class="o">=</span> <span class="n">s3Client</span><span class="o">.</span><span class="na">getObject</span><span class="o">(</span><span class="nc">GetObjectRequest</span><span class="o">.</span><span class="na">builder</span><span class="o">().</span><span class="na">bucket</span><span class="o">(</span><span class="s">"b"</span><span class="o">).</span><span class="na">key</span><span class="o">(</span><span class="s">"k"</span><span class="o">).</span><span class="na">build</span><span class="o">()))</span> <span class="o">{</span>
+    <span class="kt">byte</span><span class="o">[]</span> <span class="n">buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="mi">1024</span><span class="o">];</span>
+    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">length</span><span class="o">;</span> <span class="o">(</span><span class="n">length</span> <span class="o">=</span> <span class="n">inputStream</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">buffer</span><span class="o">))</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="o">)</span> <span class="o">{</span>
+        <span class="kt">byte</span><span class="o">[]</span> <span class="n">bytes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="o">[</span><span class="n">length</span><span class="o">];</span>
+        <span class="kt">var</span> <span class="n">string</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="n">bytes</span><span class="o">,</span> <span class="nc">StandardCharsets</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">);</span>
+        <span class="c1">// check something about the string</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">string</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"something-we-dont-like"</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="s">"Uh oh"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">ioException</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nf">RuntimeException</span><span class="o">(</span><span class="n">ioException</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>I’ve seen code like this in production environments and in an ordinary situation
+in the JVM it is totally 100% OK. The <code class="language-plaintext highlighter-rouge">try()</code> <a href="https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html">syntax</a>
+gives a guarantee that the stream will be <em>closed</em>.</p>
+
+<p>Another example here might be if JSON objects are being stored in S3 and read into memory - if the application
+POJO ‘schema’ becomes incompatible with what’s stored in S3 then you’d see this a lot.</p>
+
+<h3 id="what-is-wrong-with-this">What is wrong with this?</h3>
+
+<p>The key is when the exception gets thrown.
+S3 is a remote server with a connection managed by HTTP! The JVM can <em>close</em> your stream sure, but what happens
+to the underlying connection? How does the multiple layers in technology know the connection is now severed? 
+They don’t really. All that’s happened if some piped data is not being read anymore. Will it be read again soon? 
+The actual HTTP connection has to wait for the default timeouts to expire before closing the connection.</p>
+
+<p>It really can catch people out that <code class="language-plaintext highlighter-rouge">close</code> here <em>does not</em> mean closing the HTTP connection!</p>
+
+<p>In a busy application then what can go badly wrong is a Java application might create a S3 client as a singleton 
+with a fixed thread pool (say 50 or 100 threads). If these threads are all idling because of some nasty bug 
+released in some code that parses S3 bytes then you can quickly get thread pool exhaustion, even if the 
+code is ‘correct’ that throws the exception down the stack!</p>
+
+<h3 id="what-could-be-done">What could be done?</h3>
+
+<ol>
+  <li>Call the <code class="language-plaintext highlighter-rouge">abort()</code> method on <code class="language-plaintext highlighter-rouge">ResponseInputStream</code></li>
+  <li>Write all data to RAM or disk everytime</li>
+  <li>Do not throw when processing S3 input streams.</li>
+</ol>
+
+<p>There’s no perfect solution in my opinion.</p>
+
+<p>For 1) the issue is you can get some messy code e.g. in that example I showed earlier say I add an abort like so</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">(</span><span class="n">string</span><span class="o">.</span><span class="na">contains</span><span class="o">(</span><span class="s">"something-we-dont-like"</span><span class="o">))</span> <span class="o">{</span>
+    <span class="n">inputStream</span><span class="o">.</span><span class="na">abort</span><span class="o">();</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nf">AnImportantException</span><span class="o">(</span><span class="s">"Uh oh"</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>In <em>most</em> cases this should be fine, but have to be aware that the <code class="language-plaintext highlighter-rouge">abort</code> is itself of course having to 
+manage the underlying HTTP connection. There’s a lot of moving parts there and they can and will. 
+This means the exception (or just anything) in the next line isn’t <em>guaranteed</em> to throw, which can 
+introduce regressions in some code bases.</p>
+
+<p>The other subtler issue is slight vendor lock in. In theory the beauty of using a system like S3 is 
+allowing developers to insulate themselves from the harsh reality of actually putting things onto a disk,
+and this level of specificity to AWS’ system is perhaps replacing one form of “essential knowledge” (how 
+a disk works) with another “AWS internals”. When you write Java code like this you would no longer be
+passing around the widely accepted <code class="language-plaintext highlighter-rouge">InputStream</code> into your applications you’d be passing an AWS interface
+with special error handling rules.</p>
+
+<p>For 2) this is probably the best outcome. If you’re just piping to RAM or disk then there’s far less chance anything
+can go wrong when downloading the data, meaning shorter connections. There will be issues with risk around
+OOMing your application or running out of disk space (probably why <code class="language-plaintext highlighter-rouge">InputSteam</code> downloads were used in 
+the first place) but the trade-off is worth it in my opinion. How much does adding disk space or even RAM
+add to running an application? <em>Is it more or less than the salary-time it takes for someone in management 
+to share their screen in an all hands?</em></p>
+
+<p>For 3) it is so absurd to talk about, I only included to hit the “rule-of-3” in rhetoric.</p>]]></content><author><name>Edmund Steele</name></author><category term="software" /><summary type="html"><![CDATA[To begin with S3 is of course AWS’ object storage system that abstracts the underlying realities of actually storing files into a (mostly) intuitive and easy to use API. It’s reliability and reach are truly staggering and it is one of the most impressive large scale software systems out there.]]></summary></entry><entry><title type="html">My favourite 5 Books I’ve read in 2024</title><link href="http://localhost:4000/life/2024/12/21/books-of-the-year.html" rel="alternate" type="text/html" title="My favourite 5 Books I’ve read in 2024" /><published>2024-12-21T18:00:18+00:00</published><updated>2024-12-21T18:00:18+00:00</updated><id>http://localhost:4000/life/2024/12/21/books-of-the-year</id><content type="html" xml:base="http://localhost:4000/life/2024/12/21/books-of-the-year.html"><![CDATA[<p>To be clear these are not books published in 2024, just one’s that I have read this year.</p>
 
 <h2 id="5-fermats-last-theorem---simon-singh">5) Fermat’s Last Theorem - Simon Singh</h2>
 
