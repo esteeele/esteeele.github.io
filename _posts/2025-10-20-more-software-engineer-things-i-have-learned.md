@@ -40,9 +40,9 @@ The issue is that if you’re not upfront about what’s going on business leade
 
 ### Looking after developers in your team (if not a people manager)
 
-It’s also vital to learn how to delegate well. 9 times out of 10 people don’t know exactly what you’re doing, or even how best to help you with the workload - you can’t just drop work onto people’s lap and immediately expect them to get started. Delegation can often take time away initially but pays itself back over time. 
+It’s vital to learn how to delegate well. 9 times out of 10 people don’t know exactly what you’re doing, or even how best to help you with the workload - you can’t just drop work onto people’s lap and immediately expect them to get started. Delegation can often take time away initially but pays itself back over time. 
 
-Give Praise: This one is huge, especially for new starters or people who may lack confidence. SEng can be lonely at times, and quite a negative job 
+Give Praise: This one is huge, especially for new starters or people who may lack confidence. Software Engineering can be lonely at times, and quite negative
 - Dealing with customer reported issues 
 - Pushing back on timelines and “disappointing” other people in the business 
 - An often challenging and esoteric job we do a lot of in isolation 
@@ -53,11 +53,11 @@ In a way that may not be obvious people (especially but not exclusively juniors)
 - So I don’t improve and gain confidence 
 - So my imposter syndrome sticks around 
 
-While doing a kind of Big Tech AI “Wow - What an interesting and intelligent insight that gets right to the heart of …” doesn’t help anyone because its obviously disingenuous - remembering to give praise where its earned makes a huge difference. For example if you’re reviewing a PR that has a couple of minor of issues but is overall pretty OK then remember to include the praise for the 90% that’s good. Dropping a comment to praise specific things you think are smart can also give a lot of encouragement. 
+While doing a kind of Big Tech AI _Wow - What an interesting and intelligent insight that gets right to the heart of …_ doesn’t help anyone because its obviously disingenuous - remembering to give praise where its earned makes a huge difference. For example if you’re reviewing a PR that has a couple of minor issues but is overall OK then remember to include the praise for the 90% that’s good. Dropping a comment to praise specific things you think are smart can also give a lot of encouragement. 
 
 ## Technical Learnings
 
-### Do not ever drift along and push '1st draft' code into production 
+### Do not ever drift along and push 'First draft' code into production 
 
 If I think about what’s gone well in the past year compared to what’s gone badly its when a “rough and ready” prototype has survived all the way into production, only to become a giant pain in the neck but increasingly hard to modify as customer data builds up. 
 
