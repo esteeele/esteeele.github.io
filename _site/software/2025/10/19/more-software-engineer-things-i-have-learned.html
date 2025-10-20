@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>More things I’ve learned about developing enterprise software | Ed’s Blog</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="More things I’ve learned about developing enterprise software" />
+<meta name="author" content="Edmund Steele" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In the past year I’ve become increasingly senior at my job, being pushed into more engagement with various stakeholders at a large, UK fintech. While earlier in my career I worked very closely with product managers and leadership at a much smaller company, there’s a world of difference to working with large teams who are extremely removed from software development." />
+<meta property="og:description" content="In the past year I’ve become increasingly senior at my job, being pushed into more engagement with various stakeholders at a large, UK fintech. While earlier in my career I worked very closely with product managers and leadership at a much smaller company, there’s a world of difference to working with large teams who are extremely removed from software development." />
+<link rel="canonical" href="http://localhost:4000/software/2025/10/19/more-software-engineer-things-i-have-learned.html" />
+<meta property="og:url" content="http://localhost:4000/software/2025/10/19/more-software-engineer-things-i-have-learned.html" />
+<meta property="og:site_name" content="Ed’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-10-19T13:00:18+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="More things I’ve learned about developing enterprise software" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Edmund Steele"},"dateModified":"2025-10-19T13:00:18+01:00","datePublished":"2025-10-19T13:00:18+01:00","description":"In the past year I’ve become increasingly senior at my job, being pushed into more engagement with various stakeholders at a large, UK fintech. While earlier in my career I worked very closely with product managers and leadership at a much smaller company, there’s a world of difference to working with large teams who are extremely removed from software development.","headline":"More things I’ve learned about developing enterprise software","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/software/2025/10/19/more-software-engineer-things-i-have-learned.html"},"url":"http://localhost:4000/software/2025/10/19/more-software-engineer-things-i-have-learned.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Ed&apos;s Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Ed&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About Me</a><a class="page-link" href="/swamp-monsters/">Swamp Monsters</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">More things I&#39;ve learned about developing enterprise software</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2025-10-19T13:00:18+01:00" itemprop="datePublished">Oct 19, 2025
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>In the past year I’ve become increasingly senior at my job, being pushed into more engagement with various stakeholders at a large, UK fintech. While earlier in my career I worked very closely with product managers and leadership at a much smaller company, there’s a world of difference to working with large teams who are extremely removed from software development.</p>
+
+<p>This post tries to encapsulate what I’ve learned, or has further been reinforced recently.</p>
+
+<h2 id="soft-skills">‘Soft’ Skills</h2>
+
+<p>Soft Skills as you become more senior (unless you’re a super specialised developer) become probably more important than tech ones, or at least the line becomes horribly blurred, for doing your job.</p>
+
+<h3 id="understanding-different-ways-of-thinking">Understanding different ways of thinking</h3>
+
+<p><em>Engineers have a different mindset to business stakeholders</em></p>
+
+<p>For business stakeholders the main reason for praise/prestige tends to be around identifying problems.</p>
+
+<p>Engineers are praised for solving problems.</p>
+
+<p>Trying to get a mix of both is crucial - but doing too much of one and not enough of the other is an issue. Too much problem identification tends towards circular conversations without a resolution. Engineers diving too soon into coming up with solutions can risk creating fixes to problems that don’t really exist - or even worse than that building subtly incorrectly mis-modelling real world business logic.</p>
+
+<p>Here team work and effective communication is crucial. All meetings should have an intended outcome, and engineers should either understand the domain well enough to model it correctly, or product managers need to step in.</p>
+
+<h3 id="dealing-with-timelines">Dealing with timelines</h3>
+
+<p>Engineering is unusual in that success is based on timelines rather than outcomes. This is an endless problem that everyone struggles with, because generally we create a thing and it’s just assumed to be essentially bug free, highly available and easy to modify and change. It’s important to stress that (especially as a company’s tech stack grows and matures) that this stuff isn’t “free” and will require work. This can stray into coming up with Non-Functional Requirements - which in my opinion are showing things going slightly wrong, because it’s a kind of imposition of restrictive categoric data onto what is often quite ephemeral. I.e. do I feel this software is nice to work with?</p>
+
+<p>The best way lies in building up personal relationships and trust between you and others and hoping that your judgement and expertise will be trusted. If it’s not, and it’s impossible then you potentially work at a chop shop and it’s time to move on. In the worst case pushing back more aggressively with comments meant to illustrate the difficulty of delivering to timelines can help (but be careful) e.g. <em>It would be unfair to ask you (sales) what exactly what date you expect to sign (customer) because we are interested in outcomes rather than timelines.</em> The idea here is to point out an absurdity we often see e.g. <em>in March having a conversation where you commit to having features 1..50 on the spreadsheet all being in place at 9AM on the 17th September.</em></p>
+
+<h3 id="stakeholders-abhor-a-vacuum">Stakeholders abhor a vacuum</h3>
+
+<p>So this is something I’ve seen over and over again in my career. The nature of software development work (especially at early stages of a project but really throughout) means it’s hard to communicate what’s really going on.  Often it can look from the outside like no progress is being made - in early stage design, during periods of heavier refactoring - then suddenly everything happens at once.</p>
+
+<p>The issue is that if you’re not upfront about what’s going on business leaders will often assume the worse, especially if you’re not in a high trust environment. What’s being asked for is so so often totally reasonable - just a few bullet points about what the team has been doing, what’s been challenging etc.. In many cases ‘micromanagement’ comes from this communication vacuum, where a middle manager isn’t certain of what’s happening, is being leant on my a senior manager who has no idea what’s happening. If you can send bite sized chunks of useful information up that chain it’ll keep managers happy and off your back. (In an ideal world)</p>
+
+<h3 id="looking-after-developers-in-your-team-if-not-a-people-manager">Looking after developers in your team (if not a people manager)</h3>
+
+<p>It’s also vital to learn how to delegate well. 9 times out of 10 people don’t know exactly what you’re doing, or even how best to help you with the workload - you can’t just drop work onto people’s lap and immediately expect them to get started. Delegation can often take time away initially but pays itself back over time.</p>
+
+<p>Give Praise: This one is huge, especially for new starters or people who may lack confidence. SEng can be lonely at times, and quite a negative job</p>
+<ul>
+  <li>Dealing with customer reported issues</li>
+  <li>Pushing back on timelines and “disappointing” other people in the business</li>
+  <li>An often challenging and esoteric job we do a lot of in isolation</li>
+</ul>
+
+<p>In a way that may not be obvious people (especially but not exclusively juniors) have massive imposter syndrome which can become a deeply negative feedback loop.</p>
+<ul>
+  <li>I’m not good enough to do this work</li>
+  <li>So I’ll do something else, or not trust my judgement and get someone else to do the hard parts</li>
+  <li>So I don’t improve and gain confidence</li>
+  <li>So my imposter syndrome sticks around</li>
+</ul>
+
+<p>While doing a kind of Big Tech AI “Wow - What an interesting and intelligent insight that gets right to the heart of …” doesn’t help anyone because its obviously disingenuous - remembering to give praise where its earned makes a huge difference. For example if you’re reviewing a PR that has a couple of minor of issues but is overall pretty OK then remember to include the praise for the 90% that’s good. Dropping a comment to praise specific things you think are smart can also give a lot of encouragement.</p>
+
+<h2 id="technical-learnings">Technical Learnings</h2>
+
+<h3 id="do-not-ever-drift-along-and-push-1st-draft-code-into-production">Do not ever drift along and push ‘1st draft’ code into production</h3>
+
+<p>If I think about what’s gone well in the past year compared to what’s gone badly its when a “rough and ready” prototype has survived all the way into production, only to become a giant pain in the neck but increasingly hard to modify as customer data builds up.</p>
+
+<p>The issue is basically down to not building a data model that makes sense and/or a set of abstractions that match the kind of behaviour you’re looking for your application. Why this happens tends to relate to:</p>
+<ul>
+  <li>timelines that don’t (seem to) give developers time to refactor and re-model code to make better,</li>
+  <li>a lack of teamwork where no-one feels empowered to make sweeping changes so an inferior design persists,</li>
+  <li>developers not understanding the product domain well enough.</li>
+</ul>
+
+<p>All you can do yourself is fight this if it happens - push back if necessary (every time I’ve done this business stakeholders have been totally happy) to give pauses in feature delivery to make tactical and thoughtful changes for a couple of weeks.  In your team be the change you want to see - try and build working relationships and a high trust environment (own up to mistakes, be friendly and share credit). For design work if no-one is stepping into that role - great that means you’re up and it’s the best way to learn. If your plans crash and burn at least you’ve learned something!</p>
+
+<p>In my experience knowingly putting a design developers aren’t happy with in production is the worst way to tank team morale, delivery and trust with the rest of the business.</p>
+
+<h3 id="time-saved-in-testing-is-paid-for-many-times-over">Time saved in testing is paid for many times over</h3>
+
+<p>This one is pretty simple and kind of a no-brainer. Test as many paths as is practical, especially, especially the unhappy paths. Add good automated ‘integration tests’ that test flows as a whole from the perspective of the end-client (e.g. a mobile device) to see if the disparate parts of your application are well glued together. Sending silly mistakes into non-prod environments that need to be reverted just wastes time.</p>
+
+<p>Never send code to production you haven’t given a manual once over in demo.</p>
+
+<p>The other risk for you personally as a senior developer is that you are “on-call” as far as many non-developers in the business are concerned. For example even if a bug or issue in production originates in a part of an application you have no idea about, you’re the one who’s going to be contacted about it because people know who you are. This can be a real mental burden and result in excessive context switching and exhaustion. This is why it is vital and in your own personal interest to keep as many issues off production as you possibly can.</p>
+
+<h3 id="overseeing-implementation-of-something-youve-designed-but-are-not-the-primary-implementer-for">Overseeing implementation of something you’ve designed, but are not the primary implementer for.</h3>
+
+<p>The example: This year I designed an async process that was a version of the classic manager/worker pattern where a series of tasks happen and eventually some entity is pushed through a state machine. To ensure consistency each worked could only make one transactional write to the database after fetching some data or making a modification to a remote service.</p>
+
+<p>This is something I’ve found difficult. At earlier stages of my career what I’ve done tended to be smaller bit of functionality of APIs with a different defined purpose and scope, but as I’ve become more senior the complexity and impact of work increases. What I’ve found works well</p>
+<ul>
+  <li>Sharing very high level designs and flows using diagrams and docs. There’s not too much point going into detail at this stage as everything is so likely to change.</li>
+  <li>Making an initial implementation and personally creating the most crucial building blocks</li>
+  <li>Then ASAP have another developer extend your system, or implement interfaces required by it and get honest feedback. This is so crucial it’s hard to overstate. Software is often worthless until someone else touches it. <em>No plan of software attack survives first contact with someone else</em> to paraphrase Von Moltke.</li>
+  <li>Be vigilant but not overbearing at the review stage and ongoing monitoring.
+    <ul>
+      <li>At the review stage ensure the most fundamental parts of the design are being adhered to, but some freedom if it doesn’t affect the overall behaviour of the interface.</li>
+      <li>Often a developer (usually senior) will not understand the design and do something that violates its purpose. A senior on the team then wrote code that mixed fetches from other services, and multiple transactions, missing that the point was to avoid a situation where one system is up, the other is down and we update data into an inconsistent state. Being a senior the more junior reviewer waved the change through (perhaps thinking <em>maybe they know something I don’t</em>).</li>
+      <li>The issue here is that even if you document everything, explain it, there’s no guarantee that someone with too little time will come in and do something you don’t want. It’s your responsibility to check up and make sure you’ve done as much as you can to stop this happening.</li>
+    </ul>
+  </li>
+  <li>Take criticism seriously but not personally. It’s extremely easy to criticise someone else’s code but this may or may not be useful criticism. It’s genuinely hard to take bad faith criticism from a colleague but try not to let it get to you. Some personal anecdotes
+    <ul>
+      <li><em>This system is too over-engineered and hard to use</em> - seems like good feedback, but really the developer didn’t fully understand the process and was just trying to slam some code in. Writing better documentation and personally explaining things helped here.</li>
+      <li><em>This is too hard and time consuming to setup tests for</em>. Ding ding: this is a huge problem and requires immediate attention to resolve. You should under no circumstances be making it hard for developers to test, because this will hammer the test coverage of new code. Resolution: Implement and refactor test preparation to make setup easy and simple, for example using a test specific data model of your system’s entities.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="read-read-and-then-read-some-more">Read, read and then read some more</h3>
+
+<p>I cannot overstate this enough. I would say that reading software and business books (even if tangentially related) is maybe not super exciting, but is maybe the best use of your time outside work. Once writing code is ‘easy’ the best way to upskill yourself is by reading well regarded software books. You don’t have to agree with everything these books contain, but should at least find something interesting in their pages. Some books I’ve read recently and enjoyed</p>
+<ul>
+  <li><em>Designing Data-Intensive Applications: Martin Kleppmann</em> (If you work with web applications you owe it to yourself to read this)</li>
+  <li><em>Why Machines Learn: Anil Ananthawamy</em> (A segue to be sure but a clear and understandable dive into how machine learning actually works without getting lost in a sea of Python - quite Mathematical)</li>
+  <li><em>A Philosophy of Software Design: John Ousterhout</em></li>
+  <li><em>The Pragmatic Programmer</em> (Legendary book on “Blue Collar” coding)</li>
+  <li><em>Everything is Predicable: Tom Chivers</em> (OK not at all related but a really readable fairly lightweight book on Bayesian statistics that I’d recommend to anyone)</li>
+</ul>
+
+<p><em>N.b. AI: I didn’t use AI to write this. So much intelligent stuff has been written about AI in software I don’t feel I have anything to add. I do feel though, for being creative, AI can hurt rather than help, as it (out of the box) tends to homogenise thought rather than let whatever you have that’s unique come out. For coding though it is obviously a productivity boon.</em></p>
+
+  </div><a class="u-url" href="/software/2025/10/19/more-software-engineer-things-i-have-learned.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Ed&#39;s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Edmund Steele</li><li><a class="u-email" href="mailto:edmundsteele@gmail.com">edmundsteele@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/esteeele"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">esteeele</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>A personal blog where I&#39;ll write stuff and things</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
