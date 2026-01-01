@@ -1,4 +1,88 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-10-20T13:22:48+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ed’s Blog</title><subtitle>A personal blog where I&apos;ll write stuff and things</subtitle><author><name>Edmund Steele</name></author><entry><title type="html">More things I’ve learned about developing enterprise software</title><link href="http://localhost:4000/software/2025/10/19/more-software-engineer-things-i-have-learned.html" rel="alternate" type="text/html" title="More things I’ve learned about developing enterprise software" /><published>2025-10-19T13:00:18+01:00</published><updated>2025-10-19T13:00:18+01:00</updated><id>http://localhost:4000/software/2025/10/19/more-software-engineer-things-i-have-learned</id><content type="html" xml:base="http://localhost:4000/software/2025/10/19/more-software-engineer-things-i-have-learned.html"><![CDATA[<p>In the past year I’ve become increasingly senior at my job, being pushed into more engagement with various stakeholders at a large, UK fintech. While earlier in my career I worked very closely with product managers and leadership at a much smaller company, there’s a world of difference to working with large teams who are extremely removed from software development.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-01-01T17:52:18+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Ed’s Blog</title><subtitle>A personal blog where I&apos;ll write stuff and things</subtitle><author><name>Edmund Steele</name></author><entry><title type="html">My Predictions for 2026</title><link href="http://localhost:4000/software/2026/01/01/my-predictions-2026.html" rel="alternate" type="text/html" title="My Predictions for 2026" /><published>2026-01-01T12:00:18+00:00</published><updated>2026-01-01T12:00:18+00:00</updated><id>http://localhost:4000/software/2026/01/01/my-predictions-2026</id><content type="html" xml:base="http://localhost:4000/software/2026/01/01/my-predictions-2026.html"><![CDATA[<p>Predicting the future always goes well, which is why I’m going to give it a shot. Putting it on the internet for myself to shake my head at a year later will be even more gratifying.</p>
+
+<p>But in all seriousness predicting things, even if the predictions are completely wrong, is useful in that it can allow you to reprioritise what you see as important, and what turns out to be from empirical evidence not so important while also showing what signals you completely missed.</p>
+
+<h2 id="ai--technology">AI &amp; Technology</h2>
+
+<h3 id="ai-continues-to-impress-technologically-but-not-in-terms-of-dramatic-productivity-improvements-in-the-software-industry">AI continues to impress technologically, but not in terms of dramatic productivity improvements in the software industry.</h3>
+
+<p><em>(N.b. by AI here I mean LLMs)</em><br />
+My reason for believing this is primarily personal experience. I am a software engineer working in a fairly typical Java development role, although skewed more towards writing new code vs maintenance and support.</p>
+
+<p><em>I could not tell you which mid-senior developers that I work with are using AI tools and which are not (or using them minimally).</em></p>
+
+<p>I personally find quite a lot of value in these tools so I found this a little surprising when I found this out. I had assumed everyone did as well, but several of my colleagues barely use AI and produce great work with no noticeable speed or quality difference. I’d put this down to a few factors</p>
+
+<ul>
+  <li>Intentionality: hand cranked code has been thoughtfully constructed from start to finish</li>
+  <li>Understanding: human written code is understood inside and out by the author, who can thoughtfully answer questions at code review, and consider full edge cases</li>
+  <li>Experience with IDEs can improve code generation speed vastly, and more experienced engineers will likely have learnt their tools well.</li>
+  <li>Context Rot: widely discussed but my personal biggest issue with LLMs when writing code - once going down the wrong track the tool stays there.</li>
+  <li>Over confident bug analysis and fix recommendation (i.e. wrong for complex problems)</li>
+</ul>
+
+<p>Personally I’d estimate the benefit to a regular senior developer’s productivity from AI is around 1-5%. Seniors just do not spend enough time writing new code that the benefits there really move the needle; an AI cannot make a meeting go faster, speed up the process of deeply understanding code or carefully reviewing design documents.</p>
+
+<p>For juniors the picture is different - it is immediately obvious who is using AI to generate code, but the downside is the generated code is often straight up wrong, misaligned to the actual problem or excessively verbose. However a junior using AI well is <em>significantly</em> more productive than someone who isn’t. Who is improving faster as an engineer is still up for debate though.</p>
+
+<h3 id="the-ai-bubble-does-not-pop">The AI ‘bubble’ does not pop.</h3>
+
+<p>AI improvements are not going to stop soon. While pristine training data is mostly all used up, “AI companies” have <em>so much money</em> now they can skirt this problem (see OpenAI hiring writers etc.). Optimisations to generation and model performance will keep the momentum high and investor interest going. That being said, I do not think this year will be as explosive as 2025.</p>
+
+<p>Furthermore the tantalising prospect of AGI being just around the corner is unquantifiable but will be impossible to ignore.</p>
+
+<p>The biggest risk this year is volatility, so much is invested in moonshots where any change to belief in the ability of relatively few numbers of people to deliver them will cause trillion dollar swings. As a thought experiment imagine an unlikely but possible event like Jensen Huang getting seriously ill - how much money would be lost?</p>
+
+<p>The biggest risk longer term to OpenAI/Nvidia (and the whole financial system) are open weight models: Qwen, Deepseek, even Gemma. If the proprietary Silicon Valley models stop improving or open weight models reach a point where they are <em>good enough</em>, low cost providers can move in and host open weight models, potentially tailored to specific use cases. This would still likely help Cloud Computing companies like AWS, Google as they could run the inference of said models.</p>
+
+<h2 id="world-politics">World Politics</h2>
+
+<h3 id="a-ceasefire-in-ukraine">A ceasefire in Ukraine</h3>
+
+<p>I have very little confidence in this but I believe peace could be reached. Trump and co have very many faults but their lack of moral standards could be an advantage in terms of getting peace. Realistically Ukraine regaining its lost territory right now is not happening so any peace deal has to reflect the military reality (unfortunately).</p>
+
+<p>If Russia’s complicated masterplan fails which I think it will - continue playing Trump, help get Russia friendly far right governments elected across Europe, and defeat the still formidable Ukrainian armed forces significantly - I could see a curveball coming in the form of the Russian people saying “we’ve won, let’s have peace” and a painful deal letting them occupy some Ukrainian territory could be reached.</p>
+
+<p>Until then I don’t think Putin will back off from trying to win outright.</p>
+
+<h3 id="unending-misery-for-gaza-and-palestine">Unending misery for Gaza and Palestine</h3>
+
+<p>I see absolutely no cause for optimism here. While hopefully direct hostilities are averted, the idea of the current extremist Israeli government managing the reconstruction of Gaza with perfect respect of Palestinian rights is hard to believe. The situation in the “Occupied Palestinian Territories” will continue on its seeming path to eventual annexation. It seems like the dream of a two state solution is dying.</p>
+
+<h2 id="the-uk">The UK</h2>
+
+<h3 id="the-uk-economy-barely-grows">The UK economy barely grows</h3>
+
+<p>I think the central issue is not the government, it’s the people. The public (who are significant for elections) do want growth but only if</p>
+
+<ol>
+  <li>It does not inconvenience anyone, in any way whatsoever.</li>
+  <li>It does not change anything in any way whatsoever.</li>
+  <li>If change is impossible to stop, it must benefit those affected materially no matter how little the impact.</li>
+</ol>
+
+<p>Being empathic this is understandable. Why should anyone have to put up with the annoyance of construction or the change to their environment if it doesn’t benefit them?</p>
+
+<p>For me the wider issue is: we have through good intentions broken the feedback loops that hold the economy together.</p>
+
+<ul>
+  <li>If house prices increase <em>this does not spur new building</em> in fact local opposition increases to new developments as these are blamed for the gentrification</li>
+  <li>If more people move to an area the local government seems unable to raise the funds to improve infrastructure that would reduce the impact on locals (e.g. better roads, public transport etc.)</li>
+</ul>
+
+<p>This is why we have absurd situations where local objections such as “my view will be spoiled when I walk my dog” are seriously raised. Being slightly more Chinese (or at least French) in our approach to infrastructure and housing will be needed to materially improve growth rates. How to get there is the hard part because it involves stripping away rights.</p>
+
+<p>Another issue is the relentless online negativity pushing away potential skilled immigrants, investment and driving down consumer confidence which could actually materially reduce growth.</p>
+
+<h3 id="labour-does-terribly-in-elections-and-resurrects-brexit-as-an-issue">Labour does terribly in elections and resurrects Brexit as an issue</h3>
+
+<p>OK everyone knows Starmer’s Labour are going to struggle this year and have to pull a rabbit out of a hat to survive.</p>
+
+<p>What I can guess at is that reversing some of Brexit will feature more and more prominently. Either Starmer will pick this up to try and save his government (unlikely as it will go against the immigration reduction stuff he’s been doing), or someone else will. This will cause a massive rupture because it will resurrect the central issue of Brexit, those who want Brexit but “done right” and those who don’t want it at all.</p>
+
+<h3 id="england-win-the-world-cup">England Win the World Cup</h3>
+
+<p>Great squad, great manager let’s go. Surely this is one of the best chances for some time?</p>]]></content><author><name>Edmund Steele</name></author><category term="software" /><summary type="html"><![CDATA[Predicting the future always goes well, which is why I’m going to give it a shot. Putting it on the internet for myself to shake my head at a year later will be even more gratifying.]]></summary></entry><entry><title type="html">More things I’ve learned about developing enterprise software</title><link href="http://localhost:4000/software/2025/10/19/more-software-engineer-things-i-have-learned.html" rel="alternate" type="text/html" title="More things I’ve learned about developing enterprise software" /><published>2025-10-19T13:00:18+01:00</published><updated>2025-10-19T13:00:18+01:00</updated><id>http://localhost:4000/software/2025/10/19/more-software-engineer-things-i-have-learned</id><content type="html" xml:base="http://localhost:4000/software/2025/10/19/more-software-engineer-things-i-have-learned.html"><![CDATA[<p>In the past year I’ve become increasingly senior at my job, being pushed into more engagement with various stakeholders at a large, UK fintech. While earlier in my career I worked very closely with product managers and leadership at a much smaller company, there’s a world of difference to working with large teams who are extremely removed from software development.</p>
 
 <p>This post tries to encapsulate what I’ve learned, or has further been reinforced recently.</p>
 
