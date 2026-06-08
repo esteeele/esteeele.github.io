@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "AI is really killing the vibe"
-date:   2026-06-16 12:00:18 +0000
+date:   2026-06-08 12:00:18 +0000
 categories: [software]
 ---
   
