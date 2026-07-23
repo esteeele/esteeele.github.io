@@ -35,6 +35,7 @@ plugins:
 header_pages:
   - about.markdown
   - swamp-monsters.markdown
+  - mars.html
 
 minima:
   skin: solarized-light
