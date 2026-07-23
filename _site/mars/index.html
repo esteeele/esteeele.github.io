@@ -1,0 +1,1288 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Motion of Mars: Ellipses and the Equant</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ground: #070a12;
+      --ground-2: #0a0e1a;
+      --panel: #0e1220;
+      --panel-2: #11162a;
+      --edge: #2a2f45;
+      --gold-line: #b3924a;
+      --ink: #ece4d1;
+      --ink-dim: #a8a48d;
+      --ink-faint: #6d6a58;
+      --sun: #e9b44c;
+      --sun-soft: rgba(233, 180, 76, .55);
+      --mars: #cd8452;
+      /* truer butterscotch-ochre of Mars */
+      --mars-soft: rgba(205, 132, 82, .5);
+      --earth: #57b8c9;
+      --earth-soft: rgba(87, 184, 201, .45);
+      --equant: #c46fae;
+      /* the equant device, its own hue */
+      --retro: #e07b3a;
+      --pro: #63b7ac;
+      --serif: "Hoefler Text", "Palatino Linotype", Palatino, "URW Palladio L", "Book Antiqua", Georgia, serif;
+      --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(1200px 700px at 78% -8%, #101733 0%, transparent 60%),
+        radial-gradient(900px 600px at 8% 108%, #12111f 0%, transparent 55%),
+        var(--ground);
+      color: var(--ink);
+      font-family: var(--serif);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: clamp(20px, 4vw, 44px) clamp(16px, 4vw, 40px) 56px;
+    }
+
+    header {
+      margin-bottom: 26px;
+    }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .34em;
+      text-transform: uppercase;
+      color: var(--gold-line);
+      margin: 0 0 12px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 6vw, 56px);
+      line-height: 1.03;
+      margin: 0;
+      font-weight: 500;
+      letter-spacing: .01em;
+      text-wrap: balance;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--mars);
+    }
+
+    .lede {
+      margin: 16px 0 0;
+      max-width: 62ch;
+      color: var(--ink-dim);
+      font-size: clamp(16px, 2.1vw, 18.5px);
+      text-wrap: pretty;
+    }
+
+    .rule {
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold-line), transparent 82%);
+      margin: 22px 0 0;
+      opacity: .6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .plate {
+      position: relative;
+      background: radial-gradient(120% 120% at 50% 0%, var(--panel-2) 0%, var(--panel) 55%);
+      border: 1px solid var(--edge);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: inset 0 0 60px rgba(0, 0, 0, .45), 0 1px 0 rgba(255, 255, 255, .02);
+    }
+
+    .plate::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border-radius: 6px;
+      box-shadow: inset 0 0 0 1px rgba(179, 146, 74, .10);
+    }
+
+    .plate.sky {
+      grid-column: 1 / -1;
+    }
+
+    .plate-head {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      padding: 12px 14px 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      pointer-events: none;
+    }
+
+    .plate-title {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: .92;
+    }
+
+    .plate-sub {
+      font-size: 13px;
+      color: var(--ink-faint);
+      font-style: italic;
+      text-align: right;
+      max-width: 60%;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+    }
+
+    .plate.diagram canvas {
+      aspect-ratio: 1/1;
+    }
+
+    .plate.sky canvas {
+      aspect-ratio: auto;
+      height: clamp(220px, 32vw, 300px);
+    }
+
+    .console {
+      margin-top: 18px;
+      border: 1px solid var(--edge);
+      border-radius: 6px;
+      background: linear-gradient(180deg, var(--panel-2), var(--panel));
+      padding: 16px clamp(14px, 2.4vw, 22px);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 18px 26px;
+      align-items: center;
+    }
+
+    .console-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    button.play {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ground);
+      background: var(--sun);
+      border: none;
+      border-radius: 4px;
+      padding: 11px 18px;
+      cursor: pointer;
+      min-width: 104px;
+      transition: filter .15s, transform .05s;
+    }
+
+    button.play:hover {
+      filter: brightness(1.08);
+    }
+
+    button.play:active {
+      transform: translateY(1px);
+    }
+
+    button.ghost {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      background: transparent;
+      border: 1px solid var(--edge);
+      border-radius: 4px;
+      padding: 10px 13px;
+      cursor: pointer;
+      transition: color .15s, border-color .15s;
+    }
+
+    button.ghost:hover {
+      color: var(--ink);
+      border-color: var(--gold-line);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--sun);
+      outline-offset: 2px;
+    }
+
+    .sliders {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 26px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .field label {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+    }
+
+    .field .val {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+    }
+
+    input[type=range] {
+      width: 100%;
+      accent-color: var(--sun);
+      cursor: pointer;
+      height: 18px;
+    }
+
+    .toggles {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 22px;
+    }
+
+    .toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink-dim);
+      cursor: pointer;
+    }
+
+    .toggle input {
+      accent-color: var(--sun);
+      width: 15px;
+      height: 15px;
+    }
+
+    .toggle.eq input {
+      accent-color: var(--equant);
+    }
+
+    .readout {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .stat {
+      border: 1px solid var(--edge);
+      border-radius: 5px;
+      background: rgba(255, 255, 255, .012);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .stat .k {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .stat .v {
+      font-family: var(--mono);
+      font-size: 18px;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: .01em;
+    }
+
+    .stat.err .v {
+      color: var(--equant);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--mono);
+      font-size: 15px;
+      letter-spacing: .04em;
+    }
+
+    .pill .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+
+    .pill.pro {
+      color: var(--pro);
+    }
+
+    .pill.pro .dot {
+      background: var(--pro);
+      box-shadow: 0 0 8px var(--pro);
+    }
+
+    .pill.retro {
+      color: var(--retro);
+    }
+
+    .pill.retro .dot {
+      background: var(--retro);
+      box-shadow: 0 0 10px var(--retro);
+    }
+
+    .legend {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 24px;
+      font-size: 14.5px;
+      color: var(--ink-dim);
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .swatch {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      flex: none;
+    }
+
+    .swatch.hollow {
+      background: transparent;
+      border: 1.5px solid var(--equant);
+    }
+
+    .note {
+      margin-top: 22px;
+      color: var(--ink-faint);
+      font-size: 15px;
+      font-style: italic;
+      max-width: 90ch;
+      text-wrap: pretty;
+      line-height: 1.62;
+    }
+
+    .note b {
+      color: var(--ink-dim);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    .coda {
+      margin-top: 34px;
+      border-top: 1px solid var(--edge);
+      padding-top: 26px;
+    }
+
+    .coda h2 {
+      font-size: 12px;
+      font-family: var(--mono);
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--gold-line);
+      margin: 0 0 4px;
+      font-weight: 400;
+    }
+
+    .coda .sub {
+      margin: 0 0 16px;
+      color: var(--ink-faint);
+      font-style: italic;
+      font-size: 14.5px;
+    }
+
+    .coda p {
+      max-width: 90ch;
+      color: var(--ink-dim);
+      font-size: 16px;
+      line-height: 1.72;
+      margin: 0 0 15px;
+    }
+
+    .coda p:last-child {
+      margin-bottom: 0;
+    }
+
+    .coda b {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .coda .eqn {
+      font-family: var(--mono);
+      color: var(--ink);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    /* textbook-style inline mathematics */
+    .math {
+      font-family: var(--serif);
+      font-style: normal;
+      white-space: nowrap;
+      color: var(--ink);
+    }
+
+    .math i {
+      font-style: italic;
+    }
+
+    .math sup {
+      font-size: .72em;
+      vertical-align: .55em;
+      line-height: 0;
+    }
+
+    .frac {
+      display: inline-flex;
+      flex-direction: column;
+      vertical-align: middle;
+      text-align: center;
+      margin: 0 .16em;
+    }
+
+    .frac .num {
+      padding: 0 .5em .04em;
+    }
+
+    .frac .den {
+      padding: .05em .5em 0;
+      border-top: 1px solid currentColor;
+    }
+
+    .frac sup {
+      vertical-align: .42em;
+    }
+
+    .plate.lab {
+      margin-top: 16px;
+    }
+
+    .plate.lab canvas {
+      aspect-ratio: auto;
+      height: clamp(300px, 44vw, 440px);
+    }
+
+    .labbar {
+      margin-top: 14px;
+      border: 1px solid var(--edge);
+      border-radius: 6px;
+      background: linear-gradient(180deg, var(--panel-2), var(--panel));
+      padding: 14px 18px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px 24px;
+    }
+
+    .labbar .grp {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .labbar .field {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .labbar .mini {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .labbar .mini .k {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .labbar .mini .v {
+      font-family: var(--mono);
+      font-size: 16px;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .glossary {
+      margin-top: 34px;
+      border-top: 1px solid var(--edge);
+      padding-top: 26px;
+    }
+
+    .glossary h2 {
+      font-size: 12px;
+      font-family: var(--mono);
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--gold-line);
+      margin: 0 0 4px;
+      font-weight: 400;
+    }
+
+    .glossary .sub {
+      margin: 0 0 18px;
+      color: var(--ink-faint);
+      font-style: italic;
+      font-size: 14.5px;
+    }
+
+    .terms {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px 26px;
+      margin: 0;
+    }
+
+    .term dt {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 17.5px;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .term dt .tag {
+      font-family: var(--mono);
+      font-style: normal;
+      font-size: 9px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--equant);
+      border: 1px solid var(--equant);
+      border-radius: 3px;
+      padding: 1px 5px;
+      margin-left: 8px;
+      vertical-align: middle;
+      opacity: .8;
+    }
+
+    .term dd {
+      margin: 0;
+      font-size: 15px;
+      color: var(--ink-dim);
+      line-height: 1.58;
+    }
+
+    footer.foot {
+      margin-top: 32px;
+      border-top: 1px solid var(--edge);
+      padding-top: 18px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: var(--ink-faint);
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    footer.foot a {
+      color: var(--ink-dim);
+      text-decoration: none;
+      border-bottom: 1px solid var(--edge);
+      padding-bottom: 1px;
+    }
+
+    footer.foot a:hover {
+      color: var(--sun);
+      border-color: var(--sun);
+    }
+
+    footer.foot a[aria-current] {
+      color: var(--ink);
+    }
+
+    @media (max-width:760px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .plate.sky {
+        grid-column: auto;
+      }
+
+      .console {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .sliders {
+        grid-template-columns: 1fr;
+      }
+
+      .readout {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <h1>The Motion of Mars - with deferent and epicycle</h1>
+      <p class="lede">Earth and Mars follow real <em>elliptical</em> orbits, quickening near the Sun and easing away
+        from it. From first principles of watching the planets in the night sky Mars appears to move westward at the
+        same times each year - retrograde motion. In a elliptical heliocentric model this is easy to see why - the
+        different orbits cause the planets to 'catch up' to one another or move further apart faster.
+
+        Panel 3 shows the observed position of Mars on the horizon for an observer on earth (of course Mars wouldn't
+        always be visible) showing its backward motion and how the Kepler and Ptolemaic models differed in their
+        explanation of the phenomena.
+
+        </br>
+
+        The first models of the solar system relied entirely on the geometric tools of Antiquity - compass,
+        straight-edge
+        etc. but a model built from perfect circles around Earth is insufficient to describe planetary motion, it is
+        obviously too inaccurate and was improved upon by ancient astronomers like Ptolemy.
+        The genius of <a href="https://en.wikipedia.org/wiki/Ptolemy">Ptolemy's</a> (and others) model was using the
+        concept of an
+        equant (bias against the true center - Earth) one of
+        the most elegant ideas in the history of astronomy.
+        
+        Toggle it on and off to see just how much it achieved.
+      </p>
+      <div class="rule"></div>
+    </header>
+
+    <div class="grid">
+      <section class="plate diagram">
+        <div class="plate-head">
+          <span class="plate-title">I · The Kepler Orbit</span>
+          <span class="plate-sub">real ellipses, Sun at a focus</span>
+        </div>
+        <canvas id="cHelio"></canvas>
+      </section>
+
+      <section class="plate diagram">
+        <div class="plate-head">
+          <span class="plate-title">II · Deferent, Epicycle &amp; Equant</span>
+          <span class="plate-sub">Ptolemy's geocentric machine</span>
+        </div>
+        <canvas id="cEpi"></canvas>
+      </section>
+
+      <section class="plate sky">
+        <div class="plate-head">
+          <span class="plate-title">III · The Wandering Star</span>
+          <span class="plate-sub">reality vs. Ptolemy's prediction</span>
+        </div>
+        <canvas id="cSky"></canvas>
+      </section>
+    </div>
+
+    <div class="console">
+      <div class="console-left">
+        <button class="play" id="btnPlay">Pause</button>
+        <button class="ghost" id="btnReset">Reset</button>
+      </div>
+      <div class="sliders">
+        <div class="field">
+          <div class="field-top"><label for="sSpeed">Speed</label><span class="val" id="vSpeed">0.20 yr / s</span></div>
+          <input type="range" id="sSpeed" min="0.02" max="0.8" step="0.01" value="0.20">
+        </div>
+        <div class="field">
+          <div class="field-top"><label for="sExag">Latitude relief</label><span class="val" id="vExag">×3.0</span>
+          </div>
+          <input type="range" id="sExag" min="1" max="8" step="0.5" value="3">
+        </div>
+        <div class="toggles">
+          <label class="toggle eq"><input type="checkbox" id="tEquant" checked> Use equant</label>
+          <label class="toggle"><input type="checkbox" id="tConstruct" checked> Show construction</label>
+          <label class="toggle"><input type="checkbox" id="tGhost" checked> Show reality vs. model</label>
+          <label class="toggle"><input type="checkbox" id="tTrail" checked> Show trails</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="readout">
+      <div class="stat"><span class="k">Elapsed</span><span class="v" id="rYear">0.00 yr</span></div>
+      <div class="stat"><span class="k">Mars–Sun distance</span><span class="v" id="rDist">0.00 AU</span></div>
+      <div class="stat"><span class="k">Ecliptic longitude</span><span class="v" id="rLon">000.0°</span></div>
+      <div class="stat"><span class="k">Apparent motion</span><span class="v"><span class="pill pro" id="rMot"><span
+              class="dot"></span>Prograde</span></span></div>
+      <div class="stat err"><span class="k">Agreement with ellipse</span><span class="v" id="rErr">0′</span></div>
+    </div>
+
+    <div class="legend">
+      <span><i class="swatch" style="background:var(--sun)"></i>Sun</span>
+      <span><i class="swatch" style="background:var(--earth)"></i>Earth</span>
+      <span><i class="swatch" style="background:var(--mars)"></i>Mars (true)</span>
+      <span><i class="swatch hollow"></i>Mars (Ptolemy's model)</span>
+      <span><i class="swatch" style="background:var(--gold-line)"></i>Deferent &amp; epicycle</span>
+      <span><i class="swatch" style="background:var(--equant)"></i>Equant point</span>
+    </div>
+
+    <p class="note">In panel I the Sun sits slightly off-centre, at a focus of each ellipse, and both planets visibly
+      quicken near perihelion. Panel II rebuilds Mars's motion from circles, exactly as astronomers did for a millennium
+      and a half: the deferent is drawn off-centre from Earth, and the planet keeps time not by the centre but by the
+      equant, a companion point about which it sweeps equal angles in equal times. This "bisection of the eccentricity"
+      is what lets the circles trace the real ellipse so faithfully. The hollow marker in panel III shows where the
+      geometric model places Mars; the small gap to the true position is how closely it <em>agrees</em> with the modern
+      orbit, held to a fraction of a degree, tens of arc-minutes at most, even for Mars with its stubbornly large
+      eccentricity. A remarkable testament to how well the ancients had read the sky. Set the equant aside and that
+      agreement loosens, revealing just how much work this one idea was doing.</p>
+
+    <section class="coda">
+      <h2>The physics beneath the geometry</h2>
+      <p class="sub">Where Ptolemy and Kepler described the motion, Newton explained it.</p>
+      <p>Kepler had the shape of the orbit but not its cause. His ellipse and his equal-area rule were laws read
+        straight off Tycho Brahe's observations, superb descriptions but not consequences of any deeper principle.
+        Newton supplied the principle. Under universal gravitation every mass attracts every other along the line
+        joining them with a force <span class="math"><i>F</i> = <i>G</i>&thinsp;<span class="frac"><span
+              class="num"><i>Mm</i></span><span class="den"><i>r</i><sup>2</sup></span></span></span>, a central pull
+        falling off as the inverse square of the distance. And a spherically symmetric body such as the Sun attracts
+        everything outside it <em>exactly as if its whole mass sat at its centre</em> (Newton's shell theorem). That is
+        what licenses treating the Sun as a single point mass, and why the natural origin of the system is the Sun's
+        centre, not the Earth.</p>
+      <p>From that one force law, Kepler's astronomy follows as theorems rather than fits. A central inverse-square
+        attraction produces conic-section orbits, and the bound ones are ellipses with the force-centre at a focus:
+        Kepler's first law, now derived. Because the force is central, angular momentum is conserved, so the radius
+        vector sweeps equal areas in equal times: Kepler's second law, and the true meaning of what the equant had been
+        approximating all along, since uniform rotation about the empty focus is very nearly uniform sweeping of area.
+        Balancing gravity against the orbital acceleration gives <span class="math"><i>T</i><sup>2</sup> = <span
+            class="frac"><span class="num">4&pi;<sup>2</sup></span><span
+              class="den"><i>GM</i></span></span><i>a</i><sup>3</sup></span>, Kepler's third law, its constant now fixed
+        by the Sun's mass.</p>
+      <p>Strictly, the Sun is not quite still: both bodies orbit their common centre of mass, but because the Sun so
+        vastly outweighs the planets, that point sits barely outside its surface, so a Sun-fixed ellipse is excellent if
+        not perfect. Restore the mutual tugs between planets and the orbit no longer closes exactly. It was this
+        Newtonian frame of point masses, inverse-square gravity, and perturbations pushed to ever higher order that
+        carried planetary prediction from the arc-minutes of the equant to the arc-seconds that would later betray the
+        position of Neptune and the anomalous precession of Mercury's perihelion. Each stage kept what worked in the
+        last and explained <em>why</em> it had. See it happen for yourself just below.</p>
+    </section>
+
+    <section class="plate lab diagram">
+      <div class="plate-head">
+        <span class="plate-title">IV · The Force Law, Integrated</span>
+        <span class="plate-sub">a live orbit built only from <span class="math"><i>F</i> =
+            <i>GMm</i>/<i>r</i><sup>2</sup></span></span>
+      </div>
+      <canvas id="cLab"></canvas>
+    </section>
+    <div class="labbar">
+      <div class="grp">
+        <button class="play" id="labPlay">Pause</button>
+        <button class="ghost" id="labRestart">Restart</button>
+      </div>
+      <div class="field">
+        <div class="field-top"><label for="labMass">Companion mass</label><span class="val" id="labMassV">0 M☉</span>
+        </div>
+        <input type="range" id="labMass" min="0" max="0.03" step="0.001" value="0">
+      </div>
+      <div class="mini"><span class="k">Semi-major axis</span><span class="v" id="labA">1.54</span></div>
+      <div class="mini"><span class="k">Eccentricity</span><span class="v" id="labE">0.350</span></div>
+      <div class="mini"><span class="k">Orbit</span><span class="v"><span class="pill pro" id="labState"><span
+              class="dot"></span>Closed</span></span></div>
+    </div>
+    <p class="note">Nothing here is prescribed: the planet is released with a velocity and then simply pushed by
+      gravity, integrated step by step under an inverse-square pull toward the Sun (a symplectic scheme, so energy is
+      conserved and the shape is honest). With no companion it retraces the <em>same</em> ellipse forever; the closed
+      orbit is a theorem of the force law, not an input. Raise the companion mass and that exactness breaks: a second
+      source of gravity slowly rotates the long axis of the orbit, tracing a rosette that never quite closes. That
+      drifting apsidal line (dashed) is precisely the planet–planet perturbation Newtonian astronomy spent centuries
+      computing.</p>
+
+    <section class="glossary">
+      <h2>Glossary</h2>
+      <p class="sub">Every term used above, in one place.</p>
+      <dl class="terms">
+        <div class="term">
+          <dt>Retrograde motion</dt>
+          <dd>Near opposition Mars's ecliptic longitude briefly decreases, and for a few weeks it tracks westward
+            against the stars before resuming prograde (eastward) motion. Both planets keep moving prograde in their
+            orbits; it is the faster inner Earth overtaking Mars that swings the geocentric line of sight backwards, so
+            <span class="math">d<i>λ</i>/d<i>t</i></span> momentarily turns negative.
+          </dd>
+        </div>
+        <div class="term">
+          <dt>Opposition</dt>
+          <dd>Earth lies between the Sun and Mars, placing Mars 180° from the Sun in ecliptic longitude. It coincides
+            with minimum Earth–Mars separation, peak brightness, and the midpoint of the retrograde loop.</dd>
+        </div>
+        <div class="term">
+          <dt>Eccentricity</dt>
+          <dd>The parameter <span class="math"><i>e</i></span> fixing the shape of a Kepler ellipse (<span
+              class="math"><i>e</i> = 0</span> circular, <span class="math"><i>e</i> → 1</span> increasingly elongated).
+            Mars's <span class="math"><i>e</i> ≈ 0.093</span> varies its heliocentric distance by about ±9% around the
+            semi-major axis, and, through the conservation of angular momentum expressed in Kepler's second law, its
+            orbital speed with it.</dd>
+        </div>
+        <div class="term">
+          <dt>Perihelion</dt>
+          <dd>The point of closest approach to the Sun, <span class="math"><i>r</i> = <i>a</i>(1 − <i>e</i>)</span>,
+            where orbital speed is greatest. The opposite extreme, <span class="math"><i>r</i> = <i>a</i>(1 +
+              <i>e</i>)</span>, is aphelion, the slowest point. The apsidal line joins the two through the focus.</dd>
+        </div>
+        <div class="term">
+          <dt>Deferent and epicycle</dt>
+          <dd>The geocentric construction: the planet rides the <em>epicycle</em>, a small circle whose centre is
+            carried around the larger Earth-centred <em>deferent</em>. For a superior planet the epicycle radius encodes
+            Earth's own orbit: its vector stays antiparallel to the Earth–Sun line and turns once per year, which is
+            exactly why the loops recur at the synodic period. A remarkably economical way to capture the motion.</dd>
+        </div>
+        <div class="term">
+          <dt>Equant</dt>
+          <dd>A point offset from the deferent's centre (on the far side from Earth, at the empty focus) about which the
+            epicycle's centre moves at <em>constant angular velocity</em>. Bisecting the eccentricity like this
+            reproduces Kepler's law of areas to first order in <span class="math"><i>e</i></span>, so uniform circular
+            motion follows the true ellipse to within a fraction of a degree for Mars, tens of arc-minutes at worst. A
+            genuinely inspired piece of geometry, arrived at fourteen centuries before the ellipse itself. Set the pivot
+            back at the geometric centre and the residual grows to order <span class="math">2<i>e</i></span>, well over
+            ten degrees.</dd>
+        </div>
+        <div class="term">
+          <dt>Universal gravitation</dt>
+          <dd>Newton's law that any two masses attract along the line between them with <span class="math"><i>F</i> =
+              <i>G</i>&thinsp;<span class="frac"><span class="num"><i>Mm</i></span><span
+                  class="den"><i>r</i><sup>2</sup></span></span></span>. The inverse-square dependence is precisely what
+            makes bound orbits closed ellipses with the attracting mass at a focus; most other force laws would not
+            close at all.</dd>
+        </div>
+        <div class="term">
+          <dt>Point mass and the shell theorem</dt>
+          <dd>Newton's result that a spherically symmetric body attracts external objects as though its entire mass were
+            concentrated at its centre. This is what justifies modelling the Sun as a single point at the focus, and
+            what makes the Sun's centre, not the Earth, the system's natural origin.</dd>
+        </div>
+        <div class="term">
+          <dt>Centre of mass</dt>
+          <dd>The balance point that the Sun and a planet both orbit. Because the Sun is so overwhelmingly more massive,
+            it lies just outside the Sun's surface, so a Sun-fixed ellipse is an excellent approximation, and the tiny
+            residual wobble (plus the pull of other planets) is what later, finer work had to account for.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <footer class="foot">
+      <a href="/">← esteeele.github.io</a>
+      <span aria-current="page">The Motion of Mars · elliptical orbits and the equant</span>
+    </footer>
+  </div>
+
+  <script>
+    (() => {
+      "use strict";
+      const TWO = Math.PI * 2, D2R = Math.PI / 180;
+      const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      // ---- real-ish orbital elements (J2000-flavoured) ----
+      // peri = longitude of perihelion (ϖ); node = longitude of ascending node (Ω); inc = inclination
+      const EARTH = { a: 1.00000, e: 0.01671, T: 1.0000, peri: 102.94 * D2R, node: 0, inc: 0, M0: 0 };
+      const MARS = { a: 1.52368, e: 0.09340, T: 1.8808, peri: 336.06 * D2R, node: 49.558 * D2R, inc: 1.850 * D2R, M0: 176.9 * D2R };
+
+      const state = {
+        t: 0, playing: !reduceMotion, speed: 0.20, exag: 3,
+        equant: true, construct: true, ghost: true, trails: true, lastSampleT: -1
+      };
+      const trailEpi = [], trailSky = [], trailSkyMod = [];   // trailSky/Mod:{lam,beta}
+      const SAMPLE = 0.006, MAXTRAIL = 1500;
+
+      // ---- Kepler machinery ----
+      function solveKepler(M, e) { let E = M; for (let i = 0; i < 7; i++) { E -= (E - e * Math.sin(E) - M) / (1 - e * Math.cos(E)); } return E; }
+      // ecliptic 3D position from true anomaly nu and radius r, applying ω,i,Ω
+      function ecl(nu, r, el) {
+        const w = el.peri - el.node;                       // argument of perihelion
+        const xo = r * Math.cos(nu), yo = r * Math.sin(nu);
+        const cw = Math.cos(w), sw = Math.sin(w);
+        const x1 = xo * cw - yo * sw, y1 = xo * sw + yo * cw;
+        const ci = Math.cos(el.inc), si = Math.sin(el.inc);
+        const x2 = x1, y2 = y1 * ci, z2 = y1 * si;
+        const cn = Math.cos(el.node), sn = Math.sin(el.node);
+        return { x: x2 * cn - y2 * sn, y: x2 * sn + y2 * cn, z: z2 };
+      }
+      function helio(t, el) {
+        const M = TWO * t / el.T + el.M0;
+        const E = solveKepler(M, el.e);
+        const nu = 2 * Math.atan2(Math.sqrt(1 + el.e) * Math.sin(E / 2), Math.sqrt(1 - el.e) * Math.cos(E / 2));
+        const r = el.a * (1 - el.e * Math.cos(E));
+        const p = ecl(nu, r, el); p.r = r; return p;
+      }
+      function geoTrue(t) { const E = helio(t, EARTH), M = helio(t, MARS); return { x: M.x - E.x, y: M.y - E.y, z: M.z - E.z }; }
+      function lonTrue(t) { const g = geoTrue(t); return Math.atan2(g.y, g.x); }
+      const angDiff = (a, b) => Math.atan2(Math.sin(a - b), Math.cos(a - b));
+
+      // ---- Ptolemaic (deferent + equant + epicycle) model of geocentric Mars ----
+      // returns everything needed to both draw and evaluate the construction, in AU relative to Earth
+      function ptolemy(t, useEquant) {
+        const R = MARS.a, cLin = MARS.a * MARS.e;            // deferent radius, linear eccentricity
+        const aph = MARS.peri + Math.PI;                   // Earth→centre points toward aphelion
+        const ux0 = Math.cos(aph), uy0 = Math.sin(aph);
+        const Cx = cLin * ux0, Cy = cLin * uy0;                // deferent centre (offset from Earth)
+        const Qx = 2 * cLin * ux0, Qy = 2 * cLin * uy0;            // equant = empty focus
+        const Mmean = TWO * t / MARS.T + MARS.M0;              // mean anomaly (uniform)
+        const ang = MARS.peri + Mmean;                     // direction of the arm, from perihelion
+        const px = useEquant ? Qx : Cx, py = useEquant ? Qy : Cy;  // pivot: equant, or centre if disabled
+        // intersect ray (pivot, dir ang) with deferent circle(C,R)
+        const dx = Math.cos(ang), dy = Math.sin(ang);
+        const wx = px - Cx, wy = py - Cy, wu = wx * dx + wy * dy, ww = wx * wx + wy * wy;
+        const s = -wu + Math.sqrt(Math.max(0, wu * wu - ww + R * R));
+        const Dx = px + s * dx, Dy = py + s * dy;                  // epicycle centre ≈ Mars heliocentric vector
+        // epicycle carries Earth's annual motion: vector = −(Earth heliocentric)
+        const E = helio(t, EARTH);
+        const mx = Dx - E.x, my = Dy - E.y;                    // geocentric Mars per the model
+        return { Cx, Cy, Qx, Qy, Dx, Dy, mx, my, Rerr: Math.hypot(E.x, E.y), pivotX: px, pivotY: py };
+      }
+
+      // ---- canvases ----
+      const canv = {};
+      ["cHelio", "cEpi", "cSky", "cLab"].forEach(id => { const el = document.getElementById(id); canv[id] = { el, ctx: el.getContext("2d"), w: 0, h: 0 }; });
+      function fit(c) {
+        const dpr = Math.min(devicePixelRatio || 1, 2), r = c.el.getBoundingClientRect();
+        const w = Math.max(1, Math.round(r.width)), h = Math.max(1, Math.round(r.height));
+        if (c.el.width !== w * dpr || c.el.height !== h * dpr) { c.el.width = w * dpr; c.el.height = h * dpr; }
+        c.w = w; c.h = h; c.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      new ResizeObserver(() => Object.values(canv).forEach(fit)).observe(document.body);
+
+      // ---- fixed stars ----
+      const rng = (seed => () => ((seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff))(20260723);
+      const STAR_BETA = 0.19;
+      const stars = Array.from({ length: 230 }, () => ({ lam: rng() * TWO, beta: (rng() - .5) * 2 * STAR_BETA, mag: .25 + rng() * .75, tw: rng() * TWO }));
+
+      // ---- precomputed orbit outlines (ellipses) ----
+      function orbitPath(el) {
+        const pts = [];
+        for (let k = 0; k <= 160; k++) {
+          const E = k / 160 * TWO, r = el.a * (1 - el.e * Math.cos(E));
+          const nu = 2 * Math.atan2(Math.sqrt(1 + el.e) * Math.sin(E / 2), Math.sqrt(1 - el.e) * Math.cos(E / 2));
+          const p = ecl(nu, r, el); pts.push([p.x, p.y]);
+        }
+        return pts;
+      }
+      const pathE = orbitPath(EARTH), pathM = orbitPath(MARS);
+
+      // ---- draw helpers ----
+      const CSS = k => getComputedStyle(document.body).getPropertyValue(k).trim();
+      function disk(ctx, x, y, r, fill, glow, glowR) {
+        if (glow) { const g = ctx.createRadialGradient(x, y, 0, x, y, glowR || r * 4); g.addColorStop(0, glow); g.addColorStop(1, "transparent"); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, glowR || r * 4, 0, TWO); ctx.fill(); }
+        ctx.fillStyle = fill; ctx.beginPath(); ctx.arc(x, y, r, 0, TWO); ctx.fill();
+      }
+      function hollow(ctx, x, y, r, color) { ctx.strokeStyle = color; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(x, y, r, 0, TWO); ctx.stroke(); }
+      function label(ctx, x, y, text, color, align = "left") { ctx.font = "12px " + CSS("--mono"); ctx.fillStyle = color; ctx.textAlign = align; ctx.textBaseline = "middle"; ctx.fillText(text, x, y); }
+      function poly(ctx, pts, cx, cy, scale, color, width) {
+        ctx.strokeStyle = color; ctx.lineWidth = width || 1; ctx.beginPath();
+        pts.forEach((p, i) => { const x = cx + p[0] * scale, y = cy - p[1] * scale; i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); });
+        ctx.closePath(); ctx.stroke();
+      }
+      function ring(ctx, cx, cy, r, color, dash, width) { ctx.strokeStyle = color; ctx.lineWidth = width || 1; ctx.setLineDash(dash || []); ctx.beginPath(); ctx.arc(cx, cy, r, 0, TWO); ctx.stroke(); ctx.setLineDash([]); }
+      function fadeTrail(ctx, pts, toScreen, color, maxA, width) {
+        if (pts.length < 2) return; const bands = 7, n = pts.length;
+        ctx.lineWidth = width; ctx.lineJoin = "round"; ctx.lineCap = "round";
+        for (let b = 0; b < bands; b++) {
+          const i0 = Math.floor(n * b / bands), i1 = Math.floor(n * (b + 1) / bands); if (i1 - i0 < 1) continue;
+          ctx.globalAlpha = maxA * ((b + 1) / bands) * ((b + 1) / bands); ctx.strokeStyle = color; ctx.beginPath(); let started = false;
+          for (let i = Math.max(0, i0 - 1); i <= i1 && i < n; i++) { const p = toScreen(pts[i]); if (!p) { started = false; continue; } if (!started) { ctx.moveTo(p[0], p[1]); started = true; } else ctx.lineTo(p[0], p[1]); }
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1;
+      }
+
+      // ---------- PANEL I : Kepler ellipses ----------
+      function drawHelio() {
+        const c = canv.cHelio, ctx = c.ctx, w = c.w, h = c.h; ctx.clearRect(0, 0, w, h);
+        const cx = w / 2, cy = h / 2, scale = Math.min(w, h) * 0.42 / (MARS.a * (1 + MARS.e) * 1.04);
+        poly(ctx, pathE, cx, cy, scale, "rgba(87,184,201,.30)", 1);
+        poly(ctx, pathM, cx, cy, scale, "rgba(205,132,82,.34)", 1);
+        // perihelion tick for Mars
+        const perR = MARS.a * (1 - MARS.e), px = cx + perR * Math.cos(MARS.peri) * scale, py = cy - perR * Math.sin(MARS.peri) * scale;
+        ctx.strokeStyle = "rgba(205,132,82,.5)"; ctx.lineWidth = 1; ctx.beginPath();
+        ctx.moveTo(cx + perR * .92 * Math.cos(MARS.peri) * scale, cy - perR * .92 * Math.sin(MARS.peri) * scale);
+        ctx.lineTo(cx + perR * 1.08 * Math.cos(MARS.peri) * scale, cy - perR * 1.08 * Math.sin(MARS.peri) * scale); ctx.stroke();
+        label(ctx, px + (Math.cos(MARS.peri) > 0 ? 8 : -8), py, "perihelion", "rgba(205,132,82,.6)", Math.cos(MARS.peri) > 0 ? "left" : "right");
+        disk(ctx, cx, cy, 7, CSS("--sun"), CSS("--sun-soft"), 46);
+        const E = helio(state.t, EARTH), M = helio(state.t, MARS);
+        const ex = cx + E.x * scale, ey = cy - E.y * scale, mx = cx + M.x * scale, my = cy - M.y * scale;
+        // line of sight, extended
+        const dx = mx - ex, dy = my - ey, dl = Math.hypot(dx, dy), big = Math.max(w, h) * 1.4;
+        ctx.strokeStyle = "rgba(236,228,209,.42)"; ctx.setLineDash([5, 5]); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(ex, ey); ctx.lineTo(ex + dx / dl * big, ey + dy / dl * big); ctx.stroke(); ctx.setLineDash([]);
+        ctx.strokeStyle = "rgba(233,180,76,.20)"; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(ex, ey); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(mx, my); ctx.stroke();
+        disk(ctx, ex, ey, 5, CSS("--earth"), CSS("--earth-soft"), 22);
+        disk(ctx, mx, my, 6, CSS("--mars"), CSS("--mars-soft"), 26);
+        label(ctx, ex + 9, ey - 9, "Earth", CSS("--earth"));
+        label(ctx, mx + 9, my - 9, "Mars", CSS("--mars"));
+        label(ctx, cx + 10, cy + 13, "Sun", CSS("--sun"));
+      }
+
+      // ---------- PANEL II : deferent + equant + epicycle ----------
+      function drawEpi() {
+        const c = canv.cEpi, ctx = c.ctx, w = c.w, h = c.h; ctx.clearRect(0, 0, w, h);
+        const reach = (MARS.a * (1 + MARS.e) + EARTH.a);
+        const cx = w / 2, cy = h / 2, scale = Math.min(w, h) * 0.42 / (reach * 1.06);
+        const P = ptolemy(state.t, state.equant);
+        const Cx = cx + P.Cx * scale, Cy = cy - P.Cy * scale;
+        const Qx = cx + P.Qx * scale, Qy = cy - P.Qy * scale;
+        const Dx = cx + P.Dx * scale, Dy = cy - P.Dy * scale;
+        const mx = cx + P.mx * scale, my = cy - P.my * scale;
+        if (state.construct) {
+          // apsidal line through Earth–centre–equant
+          ctx.strokeStyle = "rgba(179,146,74,.22)"; ctx.setLineDash([2, 5]); ctx.lineWidth = 1;
+          const aph = MARS.peri + Math.PI, big = Math.max(w, h);
+          ctx.beginPath(); ctx.moveTo(cx - Math.cos(aph) * big, cy + Math.sin(aph) * big); ctx.lineTo(cx + Math.cos(aph) * big, cy - Math.sin(aph) * big); ctx.stroke(); ctx.setLineDash([]);
+          ring(ctx, Cx, Cy, MARS.a * scale, "rgba(179,146,74,.30)", [3, 5]);           // deferent
+        }
+        // trail (looping rosette from the model)
+        if (state.trails) fadeTrail(ctx, trailEpi, p => [cx + p.x * scale, cy - p.y * scale], CSS("--mars"), 0.5, 1.4);
+        // epicycle
+        ring(ctx, Dx, Dy, P.Rerr * scale, "rgba(179,146,74,.5)", [3, 4]);
+        // arms: equant→D (the uniform-rotation arm), and D→Mars
+        if (state.construct) {
+          ctx.strokeStyle = "rgba(196,111,174,.7)"; ctx.lineWidth = 1.2;      // equant arm
+          ctx.beginPath(); ctx.moveTo(Qx, Qy); ctx.lineTo(Dx, Dy); ctx.stroke();
+        }
+        ctx.strokeStyle = "rgba(179,146,74,.6)"; ctx.lineWidth = 1.2;         // epicycle arm
+        ctx.beginPath(); ctx.moveTo(Dx, Dy); ctx.lineTo(mx, my); ctx.stroke();
+        // line of sight Earth→model Mars (dashed)
+        const dx = mx - cx, dy = my - cy, dl = Math.hypot(dx, dy), big = Math.max(w, h) * 1.4;
+        ctx.strokeStyle = "rgba(236,228,209,.42)"; ctx.setLineDash([5, 5]); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + dx / dl * big, cy + dy / dl * big); ctx.stroke(); ctx.setLineDash([]);
+        // ghost: true geocentric Mars direction (faint)
+        if (state.ghost) {
+          const g = geoTrue(state.t); const tx = cx + g.x * scale, ty = cy - g.y * scale;
+          hollow(ctx, tx, ty, 5, "rgba(236,228,209,.5)");
+        }
+        // points
+        if (state.construct) {
+          disk(ctx, Cx, Cy, 3, "rgba(179,146,74,.9)"); label(ctx, Cx - 8, Cy - 9, "centre", "rgba(179,146,74,.75)", "right");
+          disk(ctx, Qx, Qy, 4, CSS("--equant")); label(ctx, Qx + 8, Qy - 9, state.equant ? "equant" : "centre-pivot", CSS("--equant"));
+        }
+        disk(ctx, cx, cy, 6, CSS("--earth"), CSS("--earth-soft"), 24); label(ctx, cx + 10, cy + 13, "Earth", CSS("--earth"));
+        disk(ctx, Dx, Dy, 3, "rgba(179,146,74,.9)");
+        disk(ctx, mx, my, 6, CSS("--mars"), CSS("--mars-soft"), 26); label(ctx, mx + 9, my - 9, "Mars", CSS("--mars"));
+      }
+
+      // ---------- PANEL III : apparent sky, reality vs model ----------
+      function drawSky() {
+        const c = canv.cSky, ctx = c.ctx, w = c.w, h = c.h; ctx.clearRect(0, 0, w, h);
+        const cx = w / 2, cyE = h * 0.52, WIN = 62 * D2R, sx = (w * 0.47) / WIN, syStar = (h * 0.30) / STAR_BETA, syM = (h * 0.30) / STAR_BETA;
+        const cam = TWO * state.t / MARS.T + MARS.M0 + MARS.peri;        // Mars mean longitude
+        const tw = state.playing && !reduceMotion ? state.t * 4 : 0;
+        for (const s of stars) {
+          const off = angDiff(s.lam, cam); if (Math.abs(off) > WIN * 1.05) continue;
+          const x = cx + off * sx, y = cyE - s.beta * syStar;
+          const a = s.mag * (reduceMotion ? 0.75 : (0.6 + 0.4 * Math.sin(tw + s.tw)));
+          ctx.fillStyle = `rgba(236,228,209,${a * 0.9})`; ctx.beginPath(); ctx.arc(x, y, s.mag * 1.3, 0, TWO); ctx.fill();
+        }
+        ctx.strokeStyle = "rgba(179,146,74,.22)"; ctx.setLineDash([2, 6]); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(0, cyE); ctx.lineTo(w, cyE); ctx.stroke(); ctx.setLineDash([]);
+        const camDeg = ((cam / D2R) % 360 + 360) % 360;
+        for (let d = -60; d <= 60; d += 10) {
+          const tickLon = Math.round((camDeg + d) / 10) * 10, off = angDiff(tickLon * D2R, cam); if (Math.abs(off) > WIN) continue;
+          const x = cx + off * sx; ctx.strokeStyle = "rgba(236,228,209,.14)"; ctx.beginPath(); ctx.moveTo(x, cyE - 5); ctx.lineTo(x, cyE + 5); ctx.stroke();
+          if ((((tickLon % 30) + 360) % 30) === 0) label(ctx, x, cyE + 16, (((tickLon % 360) + 360) % 360) + "°", "rgba(168,164,141,.6)", "center");
+        }
+        ctx.strokeStyle = "rgba(87,184,201,.25)"; ctx.setLineDash([3, 4]); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(cx, 10); ctx.lineTo(cx, h - 24); ctx.stroke(); ctx.setLineDash([]);
+        label(ctx, cx, 18, "mean", "rgba(87,184,201,.55)", "center");
+        const toScr = p => { const off = angDiff(p.lam, cam); if (Math.abs(off) > WIN * 1.15) return null; return [cx + off * sx, cyE - p.beta * state.exag * syM]; };
+        // model trail first (underneath), in the equant hue
+        if (state.trails && state.ghost) fadeTrail(ctx, trailSkyMod, toScr, CSS("--equant"), 0.4, 1.4);
+        // true trail on top, in Mars's ochre
+        if (state.trails) fadeTrail(ctx, trailSky, toScr, CSS("--mars"), 0.6, 1.8);
+        // true Mars
+        const g = geoTrue(state.t);
+        const lam = Math.atan2(g.y, g.x), beta = Math.atan2(g.z, Math.hypot(g.x, g.y));
+        const off = angDiff(lam, cam), mx = cx + off * sx, my = cyE - beta * state.exag * syM;
+        // model Mars (Ptolemy): a magenta ring at its own apparent longitude, true latitude
+        if (state.ghost) {
+          const P = ptolemy(state.t, state.equant); const lamM = Math.atan2(P.my, P.mx), offM = angDiff(lamM, cam);
+          const gx = cx + offM * sx;
+          if (Math.abs(gx - mx) > 2.5) { ctx.strokeStyle = "rgba(196,111,174,.6)"; ctx.lineWidth = 1.4; ctx.setLineDash([2, 3]); ctx.beginPath(); ctx.moveTo(gx, my); ctx.lineTo(mx, my); ctx.stroke(); ctx.setLineDash([]); }
+          disk(ctx, gx, my, 7, "rgba(196,111,174,.16)", null);        // soft magenta halo so it reads even when overlapping
+          hollow(ctx, gx, my, 6.5, CSS("--equant"));
+          label(ctx, gx, my - 14, "model", CSS("--equant"), "center");
+        }
+        // true Mars sits on top: solid, glowing, unmistakably the "real" one
+        disk(ctx, mx, my, 5, CSS("--mars"), CSS("--mars-soft"), 30);
+        label(ctx, mx + 11, my + 12, "Mars (true)", CSS("--mars"));
+      }
+
+      // ---- readouts ----
+      const el = id => document.getElementById(id);
+      function updateReadout() {
+        const M = helio(state.t, MARS);
+        const g = geoTrue(state.t);
+        const lam = ((Math.atan2(g.y, g.x) / D2R) % 360 + 360) % 360;
+        el("rYear").textContent = state.t.toFixed(2) + " yr";
+        el("rDist").textContent = M.r.toFixed(3) + " AU";
+        el("rLon").textContent = lam.toFixed(1).padStart(5, "0") + "°";
+        const hdt = 0.004, dl = angDiff(lonTrue(state.t + hdt), lonTrue(state.t - hdt));
+        const pill = el("rMot"); pill.className = "pill " + (dl < 0 ? "retro" : "pro");
+        pill.innerHTML = '<span class="dot"></span>' + (dl < 0 ? "Retrograde" : "Prograde");
+        const P = ptolemy(state.t, state.equant);
+        const errDeg = Math.abs(angDiff(Math.atan2(P.my, P.mx), Math.atan2(g.y, g.x))) / D2R;
+        el("rErr").textContent = errDeg < 1 ? Math.round(errDeg * 60) + "′" : errDeg.toFixed(2) + "°";
+      }
+
+      function sample() {
+        if (state.lastSampleT >= 0 && state.t - state.lastSampleT < SAMPLE) return;
+        state.lastSampleT = state.t;
+        const P = ptolemy(state.t, state.equant), g = geoTrue(state.t);
+        const beta = Math.atan2(g.z, Math.hypot(g.x, g.y));
+        trailEpi.push({ x: P.mx, y: P.my });
+        trailSky.push({ lam: Math.atan2(g.y, g.x), beta });
+        trailSkyMod.push({ lam: Math.atan2(P.my, P.mx), beta });   // model longitude, at true latitude
+        if (trailEpi.length > MAXTRAIL) trailEpi.shift();
+        if (trailSky.length > MAXTRAIL) trailSky.shift();
+        if (trailSkyMod.length > MAXTRAIL) trailSkyMod.shift();
+      }
+
+      // ================= PANEL IV : live inverse-square integration =================
+      // Units: G = 1, M_sun = 1, Sun fixed at the origin. A test planet is integrated with
+      // velocity Verlet (symplectic). An optional companion of adjustable mass rides a fixed
+      // circular orbit and perturbs the planet, so the ellipse precesses and no longer closes.
+      const LAB_RC = 3.2, LAB_WC = Math.sqrt(1 / (LAB_RC * LAB_RC * LAB_RC)), LAB_DT = 0.006, LAB_E0 = 0.35;
+      const lab = {
+        playing: !reduceMotion, simT: 0, mc: 0, rate: 2.4,
+        p: { x: 1, y: 0, vx: 0, vy: Math.sqrt(1 + LAB_E0) }, trail: [], lastTrailT: 0,
+        a: 1 / (1 - LAB_E0), e: LAB_E0, peri: 0
+      };
+      const labComp = t => { const th = Math.PI + LAB_WC * t; return { x: LAB_RC * Math.cos(th), y: LAB_RC * Math.sin(th) }; };
+      function labAcc(x, y, t) {
+        const r = Math.hypot(x, y), r3 = r * r * r || 1e-9; let ax = -x / r3, ay = -y / r3;
+        if (lab.mc > 0) { const c = labComp(t), dx = x - c.x, dy = y - c.y, d = Math.hypot(dx, dy), d3 = d * d * d || 1e-9; ax -= lab.mc * dx / d3; ay -= lab.mc * dy / d3; }
+        return [ax, ay];
+      }
+      function labStep() {
+        const p = lab.p, t = lab.simT; const a = labAcc(p.x, p.y, t);
+        p.x += p.vx * LAB_DT + 0.5 * a[0] * LAB_DT * LAB_DT; p.y += p.vy * LAB_DT + 0.5 * a[1] * LAB_DT * LAB_DT;
+        const a2 = labAcc(p.x, p.y, t + LAB_DT);
+        p.vx += 0.5 * (a[0] + a2[0]) * LAB_DT; p.vy += 0.5 * (a[1] + a2[1]) * LAB_DT; lab.simT += LAB_DT;
+        if (lab.simT - lab.lastTrailT >= 0.03) { lab.lastTrailT = lab.simT; lab.trail.push({ x: p.x, y: p.y }); if (lab.trail.length > 2000) lab.trail.shift(); }
+      }
+      function labElements() {
+        const p = lab.p, x = p.x, y = p.y, vx = p.vx, vy = p.vy, r = Math.hypot(x, y), v2 = vx * vx + vy * vy;
+        const eps = 0.5 * v2 - 1 / r; lab.a = eps < 0 ? -1 / (2 * eps) : Infinity;
+        const hh = x * vy - y * vx, ex = vy * hh - x / r, ey = -vx * hh - y / r;   // eccentricity vector (GM=1)
+        lab.e = Math.hypot(ex, ey); lab.peri = Math.atan2(ey, ex);
+      }
+      function labReset() { lab.p = { x: 1, y: 0, vx: 0, vy: Math.sqrt(1 + LAB_E0) }; lab.simT = 0; lab.lastTrailT = 0; lab.trail.length = 0; labElements(); }
+      function stepLab(dt) {
+        if (!lab.playing) return;
+        const steps = Math.min(600, Math.max(1, Math.round(lab.rate * dt / LAB_DT)));
+        for (let i = 0; i < steps; i++)labStep();
+        labElements();
+        const r = Math.hypot(lab.p.x, lab.p.y); if (r > 6.5 || r < 0.06) labReset();
+        el("labA").textContent = isFinite(lab.a) ? lab.a.toFixed(2) : "∞";
+        el("labE").textContent = lab.e.toFixed(3);
+        const ps = el("labState"), prec = lab.mc > 0;
+        ps.className = "pill " + (prec ? "retro" : "pro"); ps.innerHTML = '<span class="dot"></span>' + (prec ? "Precessing" : "Closed");
+      }
+      function drawLab() {
+        const c = canv.cLab; if (!c) return; const ctx = c.ctx, w = c.w, h = c.h; ctx.clearRect(0, 0, w, h);
+        const cx = w / 2, cy = h / 2, scale = Math.min(w, h) * 0.42 / 3.5;
+        ring(ctx, cx, cy, LAB_RC * scale, "rgba(87,184,201,.13)", [3, 6]);      // companion orbit
+        // drifting apsidal line + perihelion marker
+        const rp = (isFinite(lab.a) ? lab.a : 2) * (1 - lab.e), ax = Math.cos(lab.peri), ay = Math.sin(lab.peri);
+        ctx.strokeStyle = "rgba(205,132,82,.32)"; ctx.setLineDash([4, 5]); ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(cx - ax * rp * scale * 1.15, cy + ay * rp * scale * 1.15); ctx.lineTo(cx + ax * rp * scale, cy - ay * rp * scale); ctx.stroke(); ctx.setLineDash([]);
+        fadeTrail(ctx, lab.trail, pt => [cx + pt.x * scale, cy - pt.y * scale], CSS("--mars"), 0.5, 1.5);
+        disk(ctx, cx, cy, 7, CSS("--sun"), CSS("--sun-soft"), 44); label(ctx, cx + 11, cy + 13, "Sun", CSS("--sun"));
+        if (lab.mc > 0) {
+          const cc = labComp(lab.simT), ccx = cx + cc.x * scale, ccy = cy - cc.y * scale;
+          disk(ctx, ccx, ccy, 5, CSS("--earth"), CSS("--earth-soft"), 20); label(ctx, ccx + 9, ccy - 8, "companion", CSS("--earth"));
+        }
+        disk(ctx, cx + ax * rp * scale, cy - ay * rp * scale, 2.5, "rgba(205,132,82,.9)");   // perihelion
+        disk(ctx, cx + lab.p.x * scale, cy - lab.p.y * scale, 5.5, CSS("--mars"), CSS("--mars-soft"), 26);
+        label(ctx, cx + lab.p.x * scale + 9, cy - lab.p.y * scale - 9, "planet", CSS("--mars"));
+      }
+
+      let last = performance.now();
+      function frame(now) {
+        const dt = Math.min(0.05, (now - last) / 1000); last = now;
+        if (state.playing) { state.t += dt * state.speed; sample(); }
+        stepLab(dt);
+        drawHelio(); drawEpi(); drawSky(); drawLab(); updateReadout();
+        requestAnimationFrame(frame);
+      }
+      Object.values(canv).forEach(fit);
+      for (let k = 0; k < 40; k++) {
+        const tt = k * SAMPLE; const P = ptolemy(tt, state.equant), g = geoTrue(tt); const beta = Math.atan2(g.z, Math.hypot(g.x, g.y));
+        trailEpi.push({ x: P.mx, y: P.my }); trailSky.push({ lam: Math.atan2(g.y, g.x), beta }); trailSkyMod.push({ lam: Math.atan2(P.my, P.mx), beta });
+      }
+      state.t = 40 * SAMPLE; state.lastSampleT = state.t;
+      // seed the integrator with ~1.1 closed orbits so an ellipse is on screen immediately
+      labElements();
+      (function labSeed() { const T = TWO * Math.sqrt(Math.pow(1 / (1 - LAB_E0), 3)); let g = 0; while (lab.simT < T * 1.05 && g++ < 6000) labStep(); labElements(); })();
+      requestAnimationFrame(frame);
+
+      // ---- controls ----
+      el("btnPlay").textContent = state.playing ? "Pause" : "Play";
+      el("btnPlay").addEventListener("click", () => { state.playing = !state.playing; last = performance.now(); el("btnPlay").textContent = state.playing ? "Pause" : "Play"; });
+      el("btnReset").addEventListener("click", () => { state.t = 0; state.lastSampleT = -1; trailEpi.length = 0; trailSky.length = 0; trailSkyMod.length = 0; });
+      el("sSpeed").addEventListener("input", e => { state.speed = +e.target.value; el("vSpeed").textContent = state.speed.toFixed(2) + " yr / s"; });
+      el("sExag").addEventListener("input", e => { state.exag = +e.target.value; el("vExag").textContent = "×" + state.exag.toFixed(1); });
+      el("tEquant").addEventListener("change", e => { state.equant = e.target.checked; trailEpi.length = 0; trailSkyMod.length = 0; });
+      el("tConstruct").addEventListener("change", e => { state.construct = e.target.checked; });
+      el("tGhost").addEventListener("change", e => { state.ghost = e.target.checked; });
+      el("tTrail").addEventListener("change", e => { state.trails = e.target.checked; });
+
+      // panel IV controls
+      el("labPlay").textContent = lab.playing ? "Pause" : "Play";
+      el("labPlay").addEventListener("click", () => { lab.playing = !lab.playing; el("labPlay").textContent = lab.playing ? "Pause" : "Play"; });
+      el("labRestart").addEventListener("click", labReset);
+      el("labMass").addEventListener("input", e => { lab.mc = +e.target.value; el("labMassV").textContent = (lab.mc === 0 ? "0" : lab.mc.toFixed(3)) + " M☉"; });
+    })();
+  </script>
+
+</body>
+
+</html>
