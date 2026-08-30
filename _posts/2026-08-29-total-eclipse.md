@@ -13,9 +13,11 @@ I watched a total eclipse of the sun in the city of Vitoria in Northern Spain on
   
 The sun was transformed into a black disc ringed by leaping flames for a few seconds in a display of ethereal - almost supernatural - beauty, what was once so familiar, so powerful, turned on its head. The last light of the sun was squeezed out bit by bit until nothing remained. The crowd of people gasped, cheered and hugged one another. Venus appeared low in the sky which had become blue like twilight. We all took off our glasses, looking directly at the sun with naked eyes. Then all too soon it ended, the crack of light returning and consuming the black disc and the sun roared back.   
 
-<video autoplay muted loop playsinline width="100%">
-  <source src="{{ '/assets/eclipse.mp4' | relative_url }}" type="video/mp4">
-</video>
+<div style="text-align: center;">
+  <video autoplay muted loop playsinline controls width="60%">
+    <source src="{{ '/assets/eclipse.mp4' | relative_url }}" type="video/mp4">
+  </video>
+</div>
   
 **The physicality of our existence**   
   
