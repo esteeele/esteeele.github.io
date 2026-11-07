@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fdf6e3">
+  <title>Ego Free Journal</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --base: #fdf6e3;
+      --panel: #eee8d5;
+      --ink: #343434;
+      --muted: #a99869;
+      --orange: #b58900;
+    }
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; margin: 0; }
+    body {
+      background: var(--base);
+      color: var(--ink);
+      font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+      padding: 0;
+    }
+    .editor {
+      min-height: 100vh;
+      position: relative;
+      overflow: auto;
+      padding: clamp(28px, 8vw, 100px);
+      cursor: text;
+    }
+    #textCanvas {
+      min-height: 100%;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      color: var(--ink);
+      font-size: clamp(19px, 2.3vw, 25px);
+      line-height: 1.8;
+      letter-spacing: .005em;
+      outline: none;
+    }
+    .token-item { white-space: pre-wrap; transition: opacity .3s ease, filter .3s ease; }
+    .token-fading { filter: blur(1px); }
+    .custom-caret {
+      display: inline-block;
+      width: 2px;
+      height: 1.12em;
+      margin-left: -1px;
+      vertical-align: -.15em;
+      background: #000;
+      animation: blink 1s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+    #hiddenArea {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      resize: none;
+      border: 0;
+      outline: 0;
+      opacity: 0;
+      color: transparent;
+      background: transparent;
+      caret-color: transparent;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <main class="editor" id="editorWrapper" onclick="focusHiddenInput()" aria-label="Writing area">
+      <div id="textCanvas"></div>
+      <textarea id="hiddenArea" autocomplete="off" autocapitalize="sentences" spellcheck="false" aria-label="Write a note"></textarea>
+  </main>
+  <script>
+    const state = { tokens: [], lifespan: 23, fadeWindow: 5, deleteInterval: 150 };
+    const hiddenArea = document.getElementById('hiddenArea');
+    const textCanvas = document.getElementById('textCanvas');
+    let tokenIdCounter = 0;
+
+    function focusHiddenInput() { hiddenArea.focus(); }
+    function tokenizeText(text) { return text.match(/\S+|\s+/g) || []; }
+
+    function handleInput() {
+      const chunks = tokenizeText(hiddenArea.value);
+      const old = state.tokens;
+      const now = Date.now();
+      let prefix = 0;
+      while (prefix < old.length && prefix < chunks.length && old[prefix].text === chunks[prefix]) prefix++;
+      let oldEnd = old.length - 1;
+      let newEnd = chunks.length - 1;
+      while (oldEnd >= prefix && newEnd >= prefix && old[oldEnd].text === chunks[newEnd]) { oldEnd--; newEnd--; }
+      state.tokens = chunks.map((chunk, index) => {
+        if (index < prefix) return old[index];
+        if (index > newEnd) return old[oldEnd + 1 + (index - newEnd - 1)];
+        const oldToken = old[index];
+        if (oldToken && chunk.startsWith(oldToken.text)) {
+          return { ...oldToken, text: chunk };
+        }
+        return { id: ++tokenIdCounter, text: chunk, timestamp: now, element: null };
+      });
+      renderCanvas();
+    }
+
+    function renderCanvas() {
+      textCanvas.replaceChildren();
+      const fragment = document.createDocumentFragment();
+      for (const token of state.tokens) {
+        const span = token.element || document.createElement('span');
+        token.element = span;
+        span.className = 'token-item';
+        span.textContent = token.text;
+        fragment.appendChild(span);
+      }
+      textCanvas.appendChild(fragment);
+      const caret = document.createElement('span');
+      caret.className = 'custom-caret';
+      let remaining = hiddenArea.selectionStart;
+      const walker = document.createTreeWalker(textCanvas, NodeFilter.SHOW_TEXT);
+      let node;
+      while ((node = walker.nextNode())) {
+        if (remaining <= node.length) {
+          const range = document.createRange();
+          range.setStart(node, remaining);
+          range.collapse(true);
+          range.insertNode(caret);
+          return;
+        }
+        remaining -= node.length;
+      }
+      textCanvas.appendChild(caret);
+    }
+
+    function syncHiddenArea(oldLens) {
+      const start = hiddenArea.selectionStart;
+      const end = hiddenArea.selectionEnd;
+      let newText = '';
+      let oldOffset = 0;
+      let newOffset = 0;
+      let newStart = start;
+      let newEnd = end;
+      let startMapped = false;
+      let endMapped = false;
+      for (let i = 0; i < state.tokens.length; i++) {
+        const token = state.tokens[i];
+        const oldLen = oldLens[i];
+        const newLen = token.text.length;
+        newText += token.text;
+        if (!startMapped && start <= oldOffset + oldLen) {
+          newStart = newOffset + Math.min(start - oldOffset, newLen);
+          startMapped = true;
+        }
+        if (!endMapped && end <= oldOffset + oldLen) {
+          newEnd = newOffset + Math.min(end - oldOffset, newLen);
+          endMapped = true;
+        }
+        oldOffset += oldLen;
+        newOffset += newLen;
+      }
+      if (!startMapped) newStart = newOffset;
+      if (!endMapped) newEnd = newOffset;
+      hiddenArea.value = newText;
+      hiddenArea.setSelectionRange(newStart, newEnd);
+    }
+
+    function updateTokenLifespans() {
+      const now = Date.now();
+      const oldLens = state.tokens.map(token => token.text.length);
+      const fadeStart = state.lifespan * 1000;
+      const deleteStart = (state.lifespan + state.fadeWindow) * 1000;
+      let changed = false;
+
+      for (const token of state.tokens) {
+        const age = now - token.timestamp;
+        const el = token.element;
+
+        if (age >= deleteStart && token.text.length > 0) {
+          if (!token._lastDelete || now - token._lastDelete >= state.deleteInterval) {
+            token.text = token.text.slice(0, -1);
+            token._lastDelete = now;
+            changed = true;
+          }
+        }
+
+        if (el) {
+          if (age >= fadeStart) {
+            el.classList.add('token-fading');
+            el.style.opacity = age < deleteStart
+              ? Math.max(.05, (deleteStart - age) / (state.fadeWindow * 1000)).toFixed(2)
+              : '.05';
+          } else {
+            el.classList.remove('token-fading');
+            el.style.opacity = '1';
+          }
+        }
+      }
+
+      if (changed) {
+        syncHiddenArea(oldLens);
+        state.tokens = state.tokens.filter(token => token.text.length > 0);
+        renderCanvas();
+      }
+      requestAnimationFrame(updateTokenLifespans);
+    }
+
+    hiddenArea.addEventListener('input', handleInput);
+    hiddenArea.addEventListener('keyup', renderCanvas);
+    hiddenArea.addEventListener('click', renderCanvas);
+    hiddenArea.addEventListener('select', renderCanvas);
+    document.getElementById('editorWrapper').addEventListener('click', focusHiddenInput);
+    window.addEventListener('load', () => {
+      focusHiddenInput();
+      renderCanvas();
+      requestAnimationFrame(updateTokenLifespans);
+    });
+  </script>
+</body>
+</html>

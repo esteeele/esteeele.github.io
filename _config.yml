@@ -34,8 +34,8 @@ plugins:
 
 header_pages:
   - about.markdown
-  - swamp-monsters.markdown
   - mars.html
+  - ego-free-journal.html
 
 minima:
   skin: solarized-light
