@@ -24,7 +24,7 @@ Aside: "spec driven development". I've basically always done this even before AI
 
 ### Opus/Sol all the way
 
-Opus tier models are phenomenal coders but my experience is all models still are disappointing for routine non-trivial software development work. I've tried to get some of the results I've seen people on the internet at my job and most times have failed, often burning $50+ with nothing to show for it. This is really quite puzzling when you consider these companies are solving Millennium Maths problems with similar models, and yet at the same time they can still make a mess of a simple task.
+Opus tier models are phenomenal coders but my experience is all models still are disappointing for routine non-trivial software development work. I've tried to replicate some of the results I've seen people on the internet claim at my job but most times have failed, often burning $50+ with nothing to show for it. This is really quite puzzling when you consider these companies are solving Millennium Maths problems with similar models, and yet at the same time they can still make a mess of a simple task.
 
 My best results have come at the low end of the cost scale - small context windows, focussed tasks, rapidly restarting if context-rot seems to be setting in. In this scenario why use _sonnet_? Yes you might save a dollar or so, but at the cost of (generally) worse quality work. 
 
@@ -32,13 +32,13 @@ Others have talked about this a lot but I still really hate how _opus_ uses Engl
 
 ### Is it possible to have too much productivity?
 
-Even before AI came onto the scene it was widely acknowledged that software development is a mentally demanding job, and expecting 35-40hrs+/week of solid work is expecting too much, especially for over 25s. AI has (good) reduced to the need to do a lot of coding drudgery - e.g. setting up unit test cases, getting fiddly language specific features, refactoring. I have found though that this has meant you can spend the entire (non-meeting) day in the weeds of interesting yes, but still challenging problems. Obviously no-one likes being bored at work but I've noticed increasingly that I have to sometimes give myself longer breaks - before a boring refactor might take 30 minutes but leave you recharged - now that job is already done. 
+Even before AI came onto the scene it was widely acknowledged that software development is a mentally demanding job, and expecting 35-40hrs+/week of solid work is expecting too much, especially for over 25s. AI has (good) reduced to the need to do a lot of coding drudgery - e.g. setting up unit test cases, getting fiddly language specific features, refactoring. I have found though that this has meant you can spend the entire (non-meeting) day in the weeds of interesting but still challenging problems. Obviously no-one likes being bored at work but I've noticed increasingly that I have to sometimes give myself longer breaks - before a boring refactor might take 30 minutes but leave you recharged - now that job is already done. 
 
 I'm not sure where this leads. Probably nowhere but it'd be interesting to see if the industry, especially startups, become even more youth focussed. 
 
 ### Speed or haste and does code quality still matter now?
 
-Most commercial software companies create an environment where _speed_ is rewarded and highly praised. This is no bad thing in and of itself, companies want to make money and often new features are what makes money. But as a software engineer maintenance takes at least equal priority. So my experience is rooted in a time where reading code was really slow, and 'spaghetti' code was considered extremely harmful a large part because of how long, and how much code would have to be read by to understand it. AI really does change the picture here - by being able to trace a dizzying number of call sites and summarising them into a coherent story it can make a formally un-manageable codebase approachable. 
+Most commercial software companies create an environment where _speed_ is rewarded and highly praised. This is no bad thing in and of itself, companies want to make money and often new features are what makes money. But as a software engineer maintenance takes at least equal priority. So my experience is rooted in a time where reading code was really slow, and 'spaghetti' code was considered extremely harmful a large part because of how much code would have to be read by to understand it. AI really does change the picture here - by being able to trace a dizzying number of call sites and summarising them into a coherent story it can make a formerly un-manageable codebase approachable. 
 
 This is still I think the most amazing thing for me - being able to dispatch an agent to trace the behaviour of a API in another service, or summarise the behaviour of some impenetrable labyrinth of ... unconventional ... code is such a positive change compared to how it used to be. 
 
