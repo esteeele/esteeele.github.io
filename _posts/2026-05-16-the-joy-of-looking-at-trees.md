@@ -15,7 +15,7 @@ With Machine Learning apps for identification like *PlantNet* it’s easier than
   
 For me it’s mostly the feeling of connection to where you live. The trees you pass by are no longer random background assets; they have names like Limes, Horse Chestnuts, London Planes, Pin Oaks and Lebanese Cedars. Knowing something in some way brings it closer to you, makes it feel more familiar and personal to yourself.   
   
-![LondonPlanes](https://s0.geograph.org.uk/geophotos/02/61/93/2619305_6ce1c233_original.jpg)
+![LondonPlanes](/assets/plane-tree.jpg)
 
 #### You see *why* a tree might have been planted in the spot it was.   
   
