@@ -31,11 +31,21 @@
       overflow-wrap: anywhere;
       font-family: inherit;
       font-size: clamp(19px, 2.3vw, 25px);
-      line-height: 1.8;
+      line-height: 1.5;
       letter-spacing: .005em;
       outline: none;
     }
-    #textCanvas { min-height: 1.8em; pointer-events: none; }
+    #textCanvas { min-height: 1.5em; pointer-events: none; }
+    .initial-caret {
+      display: inline-block;
+      width: 1px;
+      height: 1.1em;
+      margin-right: -1px;
+      vertical-align: -.12em;
+      background: var(--ink);
+      animation: caret-blink 1s steps(2, start) infinite;
+    }
+    @keyframes caret-blink { to { visibility: hidden; } }
     .token-item { transition: opacity .3s ease, filter .3s ease; }
     .token-fading { filter: blur(1px); }
     #hiddenArea {
@@ -66,6 +76,7 @@
     const textCanvas = document.getElementById('textCanvas');
     const segmenter = new Intl.Segmenter(undefined, { granularity: 'grapheme' });
     let composing = false;
+    let hasInteracted = false;
     let elements = [];
 
     // Slice by textarea offsets without changing the surviving text's age.
@@ -124,6 +135,11 @@
         elements.push(span);
       }
       // Reserve the last line even when the text ends with a newline.
+      if (!hasInteracted && state.tokens.length === 0) {
+        const caret = document.createElement('span');
+        caret.className = 'initial-caret';
+        fragment.appendChild(caret);
+      }
       fragment.appendChild(document.createTextNode('\u200b'));
       textCanvas.replaceChildren(fragment);
       updateAppearance(Date.now());
@@ -210,6 +226,12 @@
     }
 
     hiddenArea.addEventListener('input', handleInput);
+    document.querySelector('.editor').addEventListener('pointerdown', () => {
+      if (!hasInteracted) {
+        hasInteracted = true;
+        renderCanvas();
+      }
+    }, { once: true });
     hiddenArea.addEventListener('compositionstart', () => { composing = true; });
     hiddenArea.addEventListener('compositionend', () => {
       handleInput();
