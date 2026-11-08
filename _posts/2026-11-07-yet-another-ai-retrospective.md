@@ -85,6 +85,6 @@ I think an interesting example of what I mean is dating apps, which have been cr
 
 While I think the potential for bias in AI prompts has been well covered by progressives its worth taking stock of the air we breathe - the way ChatGPT/Claude etc. talks reflects a highly western, individualist society. While I am inside this culture I can't really critique it but for those outside I wonder if it is jarring? Secondarily the focus of AI to automate office work by the USA - for shareholder capitalist ends - seems to be contrasting with the Chinese focus on future tech like robotics. Its not a surprise Chinese people are more positive about AI than Americans who (clearly rightly) see the technology as a long-term threat to their prosperity and sense of pride at work. 
 
-## Predications
+## Predictions
 
 Strap in, I have literally no idea where this all goes.
