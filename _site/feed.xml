@@ -1,4 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-11-08T08:15:11+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Edmund Steele</title><subtitle>A personal blog where I&apos;ll write stuff and things</subtitle><author><name>Edmund Steele</name></author><entry><title type="html">Totality</title><link href="http://localhost:4000/personal/2026/08/29/total-eclipse.html" rel="alternate" type="text/html" title="Totality" /><published>2026-08-29T13:00:18+01:00</published><updated>2026-08-29T13:00:18+01:00</updated><id>http://localhost:4000/personal/2026/08/29/total-eclipse</id><content type="html" xml:base="http://localhost:4000/personal/2026/08/29/total-eclipse.html"><![CDATA[<blockquote>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-11-08T15:31:25+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Edmund Steele</title><subtitle>A personal blog where I&apos;ll write stuff and things</subtitle><author><name>Edmund Steele</name></author><entry><title type="html">Yet another AI retrospective</title><link href="http://localhost:4000/software/2026/11/07/yet-another-ai-retrospective.html" rel="alternate" type="text/html" title="Yet another AI retrospective" /><published>2026-11-07T12:00:18+00:00</published><updated>2026-11-07T12:00:18+00:00</updated><id>http://localhost:4000/software/2026/11/07/yet-another-ai-retrospective</id><content type="html" xml:base="http://localhost:4000/software/2026/11/07/yet-another-ai-retrospective.html"><![CDATA[<p>2026 was the year AI became the default way to write code across a lot of the industry - or at least in the web-dev, fast results commercial space I’ve spent my career working in. For me I’ve really tried to lean into using AI as well as possible (in no small part thanks to a one-off $1000 credit from Anthropic at work).</p>
+
+<p>I’d like to share some my overall thoughts, some positive and some negatives then my thoughts on the future at the end.</p>
+
+<p>To start with - I think AI is a net large positive both for the commercial software industry and for at home fun or artistic use. I still think as a whole, especially at work, we are fumbling around for the best possible usages for it. I’ve now had enough experience to see versions of this play out: big-data, no-sql and microservices come to mind as technologies that were rapidly adopted into innapriorpiate situations then loudly and vengefully dropped. AI feels more like The Cloud - initially mocked by some but it became more-or-less a better way for most organisations to operate.</p>
+
+<p>My personal preference for using gen-AI to give some context</p>
+<ul>
+  <li><em>Opus</em> tier models in virtually all cases</li>
+  <li>I still am the primary ‘typist’ for most non-trivial code I touch</li>
+  <li>Using AI to gather context and produce one-off reports is for me the biggest game-changer of the technology</li>
+</ul>
+
+<p>I think the only thing controversial in this is not using AI to generate code in virtually all cases. While I have no actual numbers for this the results even with frontier models is still disappointing and doesn’t justify the often significant costs. Reading and writing are different fundamentally different skills. As anyone who has learned a language will tell you - you can feel like an expert in reading a language, but the even after the simplest conversations you’re reduced to a jabbering wreck. I think writing code isn’t so different. Having to <em>really</em> understand the domain and problem you are dealing with is for me the point of being a software engineer, by having to generate my own changes I can get a feeling for the current codebase, the product domain, that simply reading generated output doesn’t give me. I would still feel the superficial feeling of understanding <code class="language-plaintext highlighter-rouge">claude</code> can give you with its writing style is dangerous. But what I am not saying is that fumbling around trying to remember particular elegant language syntax or crafting some perfect code is still the most valuable use of my time - with a clear goal and limited context most AI models are now a better coder than I am.</p>
+
+<p>So in summary - I find writing code to be the most efficient way of understanding what it is that I am doing. Others experiences may differ of course, I’m speaking for myself only.</p>
+
+<p>Aside: “spec driven development”. I’ve basically always done this even before AI, but the old adage - <em>No plan of action survives first contact with the main enemy body</em> - still applies. You need to get down and dirty with the detail at some point, being immersed in it helps give the necessary context.</p>
+
+<h3 id="opussol-all-the-way">Opus/Sol all the way</h3>
+
+<p>Opus tier models are phenomenal coders but my experience is all models still are disappointing for routine non-trivial software development work. I’ve tried to get some of the results I’ve seen people on the internet at my job and most times have failed, often burning $50+ with nothing to show for it. This is really quite puzzling when you consider these companies are solving Millennium Maths problems with similar models, and yet at the same time they can still make a mess of a simple task.</p>
+
+<p>My best results have come at the low end of the cost scale - small context windows, focussed tasks, rapidly restarting if context-rot seems to be setting in. In this scenario why use <em>sonnet</em>? Yes you might save a dollar or so, but at the cost of (generally) worse quality work.</p>
+
+<p>Others have talked about this a lot but I still really hate how <em>opus</em> uses English. Its so long winded, verbose and hard to follow. My personal system prompt has an entire paragraph with a style guide just to make it bearable.</p>
+
+<h3 id="is-it-possible-to-have-too-much-productivity">Is it possible to have too much productivity?</h3>
+
+<p>Even before AI came onto the scene it was widely acknowledged that software development is a mentally demanding job, and expecting 35-40hrs+/week of solid work is expecting too much, especially for over 25s. AI has (good) reduced to the need to do a lot of coding drudgery - e.g. setting up unit test cases, getting fiddly language specific features, refactoring. I have found though that this has meant you can spend the entire (non-meeting) day in the weeds of interesting yes, but still challenging problems. Obviously no-one likes being bored at work but I’ve noticed increasingly that I have to sometimes give myself longer breaks - before a boring refactor might take 30 minutes but leave you recharged - now that job is already done.</p>
+
+<p>I’m not sure where this leads. Probably nowhere but it’d be interesting to see if the industry, especially startups, become even more youth focussed.</p>
+
+<h3 id="speed-or-haste-and-does-code-quality-still-matter-now">Speed or haste and does code quality still matter now?</h3>
+
+<p>Most commercial software companies create an environment where <em>speed</em> is rewarded and highly praised. This is no bad thing in and of itself, companies want to make money and often new features are what makes money. But as a software engineer maintenance takes at least equal priority. So my experience is rooted in a time where reading code was really slow, and ‘spaghetti’ code was considered extremely harmful a large part because of how long, and how much code would have to be read by to understand it. AI really does change the picture here - by being able to trace a dizzying number of call sites and summarising them into a coherent story it can make a formally un-manageable codebase approachable.</p>
+
+<p>This is still I think the most amazing thing for me - being able to dispatch an agent to trace the behaviour of a API in another service, or summarise the behaviour of some impenetrable labyrinth of … unconventional … code is such a positive change compared to how it used to be.</p>
+
+<p>So I’m wrestling with the question when doing PR reviews of AI code, namely: <em>I don’t like this code, it is hard to understand and there’s about 10x too much to review ‘safely’</em>.</p>
+
+<p>But – seriously – does this still matter? If a developer is creating software by typing a compression of the code they want in an English sentence, and the AI is perfectly capable of compressing the existing codebase down into a form that’s changeable, does it matter that I cannot understand the change?</p>
+
+<p>For me personally am I still of the opinion that yes, coding standards shouldn’t change and using AI to write <em>more</em> code is irresponsible at worst, and when compared to using it to the same amount of better code just plain inefficient. But am I right? I actually am doubting myself.</p>
+
+<p>I think on the ‘slow down’ side the evidence is</p>
+<ul>
+  <li>Senior engineers (including myself) authoring code including novice mistakes</li>
+  <li>Noticeably more buggy interactions between systems as more change is put into the two sides or a contract (e.g. mobile vs browser, service-service)</li>
+  <li>I’ve noticed less flexibility in adjusting to changing requirements - e.g. because a single engineer can produce an app in no time, an early stage change in product requirements (natural) causes an outsided impact. Generally the <em>code</em> as always is the easiest thing to change, but I’ve seen much more of my time needing to go into complex database schema refactorings and data migrations than ever before.</li>
+</ul>
+
+<p>I think the last point is the most fundamental. A code migration has always been ‘easy’ but the data migration is the challenge. Reducing the application tier coding time probably means even more emphasis on getting the schema right ahead of time.</p>
+
+<p>I’ve noticed as well with “spec driven development” that we’re possibly moving back towards waterfall style work - when you can get production users in half the time, you’re also giving yourself half the time to spot issues with the data model - so you need to be even more sure what you’re doing is right before you start.</p>
+
+<h3 id="slop-grenades">Slop grenades</h3>
+
+<p>The “slop grenade” (a colossal amount of low quality AI work) is an organisational problem. If you or your colleagues are routinely spamming low quality work and documentation to production, or worse ‘helping’ your colleagues with PR descriptions that ape a Dickensian sentence structure; toting vertiginous detail, compelling a thesaurus to fathom, then please stop forthwith. If you’re a senior you need to have these conversations, yes they’re uncomfortable but its your responsibility to use your expertise to guide the team.</p>
+
+<p>And using AI to reply to your colleagues should not be OK. Forcing a human to argue with a next-token predicator is borderline abusive behaviour.</p>
+
+<h2 id="wider-trends-and-big-brain-time">Wider trends and “big brain time”</h2>
+
+<h3 id="productivity-and-money">Productivity and money</h3>
+
+<p>I said last year that I’d estimate AI giving engineers a 1-5% productivity increase. I think this is laughably too low, but really for senior engineers I think the productivity gain isn’t as high as is claimed. If someone says AI makes them 10x more productive I think that basically means they don’t understand productivity statistics. For context in a country like France, the productivity increase for farmers between 1900 (hand tools, horse drawn ploughs) to 1960 (modern fertlisers, tractors) would be something like 8-10x - and globally replicated this transformed human society in the most profound way it has ever changed. Claude code is cool but we’re not there yet, sorry.</p>
+
+<p>The current economic picture seems to be becoming clear - a clear pickup in software companies productivity - good revenue, lower headcount, but at the cost of reduced hiring at the junior level. I’d say this matches my experience exactly - boring time consuming routine coding is now basically fully automated which means I genuinely get an appreciably larger workload done.</p>
+
+<p>But the thing which interests me is how this is costed for. AI use on a large mature codebase can be really, really expensive i.e. &gt;$1000/month. While its quite easy to get a lot of productivity for a lot less than this I am curious at the executive level how this is being seen. For example a senior engineer in London costs a company at least £10,000 (like $13500 probably) a month to hire. If said engineer spends $12,000/year on AI they have increased their cost to the company by ~10%. So you <em>need</em> a ~10% productivity increase to justify this. Remember that AI power users will go <em>much</em> above this. This is a little catty but my impression of tokenmaxxers believe they are 10x more productive - but actually are they? Certainly code is written <em>many many</em> times faster but does this always translate into <em>productivity</em>? My experience using a lot of tokens is that context rot is still a very, very real problem, and that using brain + AI makes it quite hard even to spend this much money. The other thought I had is because AI is still largely a USA product a company in a lower income country like Turkiye pays just as much as a London based engineer - meaning high AI use there is even more of a concern for the bill payers.</p>
+
+<p>Lastly - I still think valuations for AI adjacent companies are bananas, but equally there’s another part of me that thinks maybe some time in the near future the AI models will become fully able to replace human labour, even for expensive office jobs. I think the other factor often overlooked is seeing a person compared to an AI. Lets say it costs an employer £120,000pa to employ a senior - the 120k buys you in the best possible case about 45-46 weeks of work. Unless they get sick, or have a child, or get depressed, or just lose motivation. Then if you don’t need them anymore you have to undergo an expensive and time consuming redundancy program, better hope you got everything right, otherwise you’re getting sued.</p>
+
+<p>An AI agent seen in the same light is much, much more attractive in comparison. Full productivity always, no sick days, down to the millisecond at-will ‘employment’. It is like having an endless supply of gig workers at your beck and call. Uber for the professional classes. I think we need to be vigilante that we don’t let this technology erode hard won employment rights.</p>
+
+<h3 id="politics">Politics</h3>
+
+<p>A common theme I’ve noticed when discussing AI (and technology in general) is that technologists often underestimate the importance of the political system or beliefs of the creators that creates a piece of technology on both itself, and its rollout. While its often the case that technology is influenced more by the natural laws of physics than human ones I feel software is a lot more politised than we might think. Certainly when talking to non-technologists who are critical of AI the recurrent themes are to talk mainly about the people creating the machines and their beliefs than what the AI is doing.</p>
+
+<p>I think an interesting example of what I mean is dating apps, which have been created overwhelmingly by men, probably mainly because men are more likely to be coders. But its worth thinking about what the these apps show you - massive emphasis on photos, some optional questions to indicate personality. Who is more likely to rate partners mainly based only on looks? Men of course. I hope this isn’t cancellable but women tend to take in a broader range of factors when deciding on who they date than men - e.g. personality, humour, career, life plans… What could dating apps have looked like if they were built entirely by a group of women? It seems many complaints about dating apps stem for over-emphasis on looks - men feeling worthless, women feeling objectified.</p>
+
+<p>While I think the potential for bias in AI prompts has been well covered by progressives its worth taking stock of the air we breathe - the way ChatGPT/Claude etc. talks reflects a highly western, individualist society. While I am inside this culture I can’t really critique it but for those outside I wonder if it is jarring? Secondarily the focus of AI to automate office work by the USA - for shareholder capitalist ends - seems to be contrasting with the Chinese focus on future tech like robotics. Its not a surprise Chinese people are more positive about AI than Americans who (clearly rightly) see the technology as a long-term threat to their prosperity and sense of pride at work.</p>
+
+<h2 id="predications">Predications</h2>
+
+<p>Strap in, I have literally no idea where this all goes.</p>]]></content><author><name>Edmund Steele</name></author><category term="software" /><summary type="html"><![CDATA[2026 was the year AI became the default way to write code across a lot of the industry - or at least in the web-dev, fast results commercial space I’ve spent my career working in. For me I’ve really tried to lean into using AI as well as possible (in no small part thanks to a one-off $1000 credit from Anthropic at work).]]></summary></entry><entry><title type="html">Totality</title><link href="http://localhost:4000/personal/2026/08/29/total-eclipse.html" rel="alternate" type="text/html" title="Totality" /><published>2026-08-29T13:00:18+01:00</published><updated>2026-08-29T13:00:18+01:00</updated><id>http://localhost:4000/personal/2026/08/29/total-eclipse</id><content type="html" xml:base="http://localhost:4000/personal/2026/08/29/total-eclipse.html"><![CDATA[<blockquote>
   <p>For he who knows how we are formed, he remembers that we are dust.</p>
 
   <p>Psalm 103:14</p>
@@ -580,141 +666,4 @@ City tourism is great in so many ways but the flipside is that for Japanese comm
 
 <p>おやすみ!</p>
 
-<p><img src="https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/tokyo-kamakura/tokyo-moon.jpeg" alt="Moon" /></p>]]></content><author><name>Edmund Steele</name></author><category term="japan" /><summary type="html"><![CDATA[I was unsure about doing a final entry in this series as what else could possibly be said or written about Tokyo? Even without knowing where these places are scenes like the ‘Shibuya scramble’, the Tokyo Sky Tower and the general manic-ness of central Tokyo are so well known it feels like unnecessary to rehash. So this is going to be essentially just things I noticed, or reflect the city as it is most of the time. I also went to Kamakura which was more generically photogenic so that’s more standard tourist snaps.]]></summary></entry><entry><title type="html">Western Japan - Onomichi and Shikoku</title><link href="http://localhost:4000/japan/2024/10/30/western-japan.html" rel="alternate" type="text/html" title="Western Japan - Onomichi and Shikoku" /><published>2024-10-30T18:41:18+00:00</published><updated>2024-10-30T18:41:18+00:00</updated><id>http://localhost:4000/japan/2024/10/30/western-japan</id><content type="html" xml:base="http://localhost:4000/japan/2024/10/30/western-japan.html"><![CDATA[<h2 id="omonichi">Omonichi</h2>
-
-<p>My main reason for visiting this town was to do the ‘Shimanami kaido’ a fun cycling route that links together the mainland of Honshu with the smaller and much more rural island of Shikoku. I’d say as a single activity this was the highlight of my holiday. Its hard really to overstate how awesome and how right up my street it was. You basically cycle through beautiful fishing villages and docks across these improbably massive suspension bridges. Onomichi is beautiful enough as is and I had probably my best Ramen experience in Japan here - the food was great and it was first place I was able to sound out a menu item by reading the Hiragan aloud. I was absolutely buzzing from that and the “Ramen Master” seemed genuinely happy a tourist said something in Japanese.</p>
-
-<p>On a side note the handwritten menus are something I love about Japanese restaurants - they presumably are 
-there because they chef just makes whatever they have ingredients before on a bit of a rota, the food is low-cost with 
-no frills. I <em>wish</em> we had more dining options for healthier fast food that’s casual and friendly for eating alone, just somewhere between 
-Maccies and an actual restaurant.</p>
-
-<p><img src="https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/onomichi-ramen.jpeg" alt="Ramen" /></p>
-
-<p>The town itself is nice in and of itself although I didn’t spend that much time here</p>
-
-<p><img src="https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/onomichi.jpeg" alt="Onomichi" /></p>
-
-<p>Am I in Venice?
-<img src="https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/canal.jpeg" alt="Canal" /></p>
-
-<h4 id="aside-japanese-economic-history">Aside: Japanese Economic History</h4>
-
-<p>This is the one of the most visible symbols in Japan of the dangers of over building infrastructure - as so much of the economy and employment of Japan is taken up in construction which boomed during Japan’s postwar economic miracle the government wanted (or due to cronyisnm) to keep the gravy train rolling. At this point Shikoku already has a great road and rail bridge to its most densely populated region in Kagawa province. The economic case for building another set of extremely expensive road only bridges isn’t that strong.
- The case against is basically</p>
-<ul>
-  <li>Massive upfront capital investment that may have more efficient uses (even tax cuts in some circumstances that allow people to spend where they feel it improves their lives best)</li>
-  <li>The big one: the upkeep bill which always dwarves the initial cost of construction. If the economic growth in the regions is less than the cost of maintenance then you’ve got a white elephant.</li>
-</ul>
-
-<p>So in some ways the ‘point’ of the <em>Shimano kaido</em> is to get <em>someone</em> to use these damn bridges and bring some tourist investment to the area! And I’m all for it. In some ways the engineering <em>was</em> the touristic experience - the staggering scale and majesty of these basically empty bridges is staggering. That there’s just one of these after another after another defies belief. Hats off to Japan in the 1990s - you had an ambition and belief in progress we seem to have lost a little in the UK.</p>
-
-<p><img src="https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/big-bridges.jpeg" alt="BigBridgeLittleCar" /></p>
-
-<h2 id="shimmy-shimano-kaido">Shimmy Shimano kaido</h2>
-
-<p>OK it’s the <code class="language-plaintext highlighter-rouge">Shimanami kaido</code> but it sounds kind of similar to the bike brake system <code class="language-plaintext highlighter-rouge">Shimano</code> so my brain kept correcting it. 
-There’s not much more to say so here’s some photos</p>
-
-<p><img src="https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/paraiso-2.jpeg" alt="Islands" />
-<img src="https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/pano-shimano.jpeg" alt="Panorama" /></p>
-
-<p>There were even purpose built ramps up to the bridges!
-<img src="https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/ramp-timelapse.mov" alt="BridgeRamp" /></p>
-
-<h2 id="kagawa-prefecture-takamtsu">Kagawa Prefecture: Takamtsu</h2>
-
-<p>Takamatsu was a wonderful surprise - I only really saw it as a pit stop on the way to the “Iya Valley” which I’d seen online and looked really cool. There’s nothing too amazing about this place in and of itself but from Japanese people I’d heard things about the “Sanuki Udon” Buckwheat noodle dishes in this part of Japan. I loved these noodles - they’re basically big, extra chunky noodles in rich meaty broths. 
-Just gooey carby deliciousness in a bowl - their Chinese cousins Xi’an style noodles also have a special place in my heart because I used to get them relatively often when I lived with my brother over the long periods of lockdown as a pick me up.</p>
-
-<p>As for an actual tourist attraction the only place I really went to was the “Ritsurin Koen” garden - absolutely beautiful and a place that really speaks to the peaceful serenity (and inequality) of the Edo feudal era.</p>
-
-<p><img src="https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/Takamatsu.jpeg" alt="TakamatsuGarden" /></p>
-
-<h3 id="cross-country-to-the-south-coast">Cross Country to the South Coast</h3>
-
-<p>From here things really started to unravel a little. Really I have no-one to blame but myself - I just tried to cram <em>way</em> too much in. I should really have picked a base, probably either Takamtsu or Kochi and done day trips, or just planned a little better. Basically as a estimate for about 3 days I spent probably an equal amount of time travelling as I did actually doing touristic activities.</p>
-
-<p><img src="https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/shikoku-train.jpeg" alt="AverageTrainRide" /></p>
-
-<p>Japan has wonderful public transport, Shikoku’s is still OK … but it is fundamentally an extremely rural area. What I was doing was a little mad - basically trying to get to one of the most rural and inaccessible parts of Japan for effectively a day trip. Mad. It <em>did</em> work and I <em>did</em> get some good photos … but man I should have budgeted more time for this place or just cut part of the trip.</p>
-
-<p><img src="https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/shikoku-population.png" alt="PopulationDensity" /></p>
-
-<p><img src="https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/shikoku-tea.jpeg" alt="Teagrowing" /></p>
-
-<p>So the guesthouse I was staying at in the middle of nowhere basically had no food nearby so I had boil in the bag noodles for dinner and breakfast, I was a little cold, starting to feel quite homesick and lonely having not really had a long conversation for a couple of days at this point. I think it was at this point it kind of twigged that this was a holiday from work - not some kind of mad experience accumulation trip. So instead of dashing off on some expedition I just hired a bike then cycled to a river and chilled out. I don’t know if it was exhaustion or some kind of Shinto mindfullness but I did just sit next to a river in the sun for like an hour just existing.</p>
-
-<p><img src="https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/shikoku-sign.jpeg" alt="overgrown" /></p>
-
-<p>My reverie was broken abruptly when my phone pinged me (IIRC)</p>
-
-<blockquote>
-  <p>Your flight departs Kochi Airport for Tokyo in 2 hours, checkin closed!</p>
-</blockquote>
-
-<p>Yabaie! I had somehow booked my flight on the wrong day - perhaps related to the timezone on the app I was using? Again no-one to blame but myself but damn…</p>
-
-<p>No worries I thought. I can still get a bus to Osaka or Okayama then ride the Shinkansen back to Tokyo. After all its just money, fortunately I could afford it. I then decided to check my hotel in Kochi (which I was still interested in seeing) and saw that (thanks Booking) it was actually about 20km outside accessible only through busses. Yay. At this point I should have just cut my losses - gone back to Takamatsu, grabbed any hotel I could then gone back on the next day.</p>
-
-<p>A strange abandoned tourist attraction?
-<img src="https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/shikoku-mine.jpeg" alt="AbandonedPlace" /></p>
-
-<p>Instead I was like “whatever” I’ve got time I’ll just sit on the busses. So I got up, found the cafe I wanted to visit, and probably the nicest cafe lunch I’d had in Japan with some of the kindest people - an old couple running a takeaway cafe in their village with locally produced ingredients and home cooking. The old lady even showed be making an offering to their Inari, which I totally humiliated myself by thinking she was offering buckwheat when it was really some other type of grass which they got a good chuckle out of.</p>
-
-<p><img src="https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/delicious-meal.jpeg" alt="Lunch" /></p>
-
-<p>So I pedalled back to the train, got to Kochi then tried to get to the hostel. The hostel owner was just unbelievably friendly and helpful - texting me and helping out with which bus to take, where to go etc. Unfortunately busses aren’t numbered and only have the Kanji of the end destination which, in my defence, is extremely confusing. Essentially I got on totally the wrong bus - the bus driver questioned where I was going then was like “Ie Ie, Kocchi (no no this way) -&gt;” pointing at some bus station (and not charging) then saying to go and ask the people inside for help. Which I did to the best of my ability I basically said</p>
-
-<blockquote>
-  <p>Me: Where village bus is?</p>
-
-  <p>Ticket Person: What ??? I don’t understand</p>
-
-  <p>Village … please ?</p>
-
-  <p>…</p>
-
-  <p>Excuse me, I’m sorry 
-…</p>
-</blockquote>
-
-<p>I know I probably “did something wrong” but I’m sorry if you work in a bus station, and someone asks about a place what the hell do you think they are asking for? She knew, she was just being deliberately obstructive. I was stressed and a bit cranky which didn’t help but WTF was her problem? Just couldn’t be arsed I guess.</p>
-
-<p>Anyway I figured out a route and managed to make it to the hostel but arrived long into the night, tired, hungry and about 2 hours late. I’m not ashamed to say that walking along the path of some fishing village and feeling the briny breeze and seaside smell of rotting kelp I was reminded of seaside holidays at home and I sat on the breakwater and had a little cry by myself in the dark. Not that I was sad or anything, just had to let something out. Fortunately the hostel owner was just the sweetest person, really friendly and kind. She even offered to drive me to the supermarket where I got some stir fry, salad and ice-cream and had a nice little meal using their microwave. The incredibly friendly shop counter guy may have thought we had a conversation but to this day I have no idea what he was talking about or why he thought I could speak Japanese, I was just nodding at appropriate times and smiling. He probably appreciated the company.</p>
-
-<p>The next day started pretty well, I had a tasty breakfast of a seaweed rice ball then set off for Kochi. I’d fixed my route - there was a coach from Kochi (ahey) back to Okayama on the Shinkansen which would get me back to Tokyo (very expensively) on the same day. From there it all went downhill. I waited for the first bus, then waited some more, then some more, then the next busses supposed departure came and went then I started to stress. I was literally in the middle of nowhere, I didn’t know how to get a taxi or really how to get out easily. Instead I decided to hoof it overland to the next train station - about a 3 hour walk.</p>
-
-<p><img src="https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/neko.jpeg" alt="NekoCar" /></p>
-
-<p>This is going to sound weird but a long country walk where you don’t want to do it, and its just an inconvenience hits totally different to a hike. In theory they’re both just nice long walks and there were literally tourists LARPing as pilgrims doing the same walk I was just so angry at myself for cocking this up as much as I had done. I think hitchhiking is illegal in Japan so I just walked. In some ways I’m glad I did because I saw non picturesque rural Japan and … it kind of sucks? 
-It really did not feel like a wealthy place at all, perhaps a healthy and happy one but the houses were small and poor quality - lots of small scale labour intensive farming with the landscape churned up by ugly pavementless roads and tunnels. 
-I’m not trying to be mean just understanding that actually its not that nice in the countryside to actually live - there’s lots of good reasons young people leave for the cities.</p>
-
-<p>Still when I finally made it to the train station, sweaty and gross, and the train came and I arrived in Kochi I finally relaxed. There was a cool Sunday market which I just made to the end of where I got a nice cooking knife and some Matcha Tea Ice Cream and saw Kochi’s beautiful castle and gardens.</p>
-
-<p><em>Aside: I learnt the morpheme for tea and think its really pretty</em></p>
-<h1 id="茶-cha">茶 (cha)</h1>
-
-<p>I worked out I’d spent about 8hrs travelling to get to Kochi and about 2 hours actually seeing the town. Leaving the place in probably the comfiest coach journey I’d ever taken (the driver even whispered the announcements to not disturb people!) I was just relieved.</p>
-
-<p>Shikoku was probably the most min-maxed holiday I’ve ever had in my life. Elegiac wonder to depression with no in-between.</p>
-
-<p>I’d definitely recommend it for hiking, cycling and sports and it was close to my favourite place to visit at its best but</p>
-<ul>
-  <li>Allow for a longer visit</li>
-  <li>Hire a car</li>
-</ul>
-
-<p><img src="https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/lying-flat-beach.jpeg" alt="LyingFlat" /></p>
-
-<h3 id="musing">Musing</h3>
-
-<p>I read somewhere that a tourist is defined as being someone “who travels to experience a change”. In that way 
-I think Shikoku provided that for me. Its a bit odd in some ways to travel by yourself and I’m definitely feeling the 
-terrifying progression of time and not really being young anymore. I actually think taking time to pause and reflect
-while doing something totally out of the ordinary is a wonderful thing, and may even be the best thing about living
-in a wealthy country for me.</p>
-
-<p>Sleepy me except its dark and moody
-<img src="https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/west-japan/tired-me.jpeg" alt="TiredMe" /></p>]]></content><author><name>Edmund Steele</name></author><category term="japan" /><summary type="html"><![CDATA[Omonichi]]></summary></entry></feed>
+<p><img src="https://storage.googleapis.com/images-for-blog-ad4ea432-25af-4ea4-8d4b-58ea84408c68/photo-backups/tokyo-kamakura/tokyo-moon.jpeg" alt="Moon" /></p>]]></content><author><name>Edmund Steele</name></author><category term="japan" /><summary type="html"><![CDATA[I was unsure about doing a final entry in this series as what else could possibly be said or written about Tokyo? Even without knowing where these places are scenes like the ‘Shibuya scramble’, the Tokyo Sky Tower and the general manic-ness of central Tokyo are so well known it feels like unnecessary to rehash. So this is going to be essentially just things I noticed, or reflect the city as it is most of the time. I also went to Kamakura which was more generically photogenic so that’s more standard tourist snaps.]]></summary></entry></feed>
